@@ -7,6 +7,11 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=storybook",
-    "storybook": "npm run storybook --workspace=storybook"
+    "build": "npm run build --workspace=storybook",
+    "preview": "npm run preview --workspace=storybook",
+    "lint": "npm run lint --workspace=storybook",
+    "storybook": "npm run storybook --workspace=storybook",
+    "build-storybook": "npm run build-storybook --workspace=storybook",
+    "test": "npm test --workspaces --if-present"
   }
 }

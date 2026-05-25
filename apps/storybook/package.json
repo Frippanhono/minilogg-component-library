@@ -16,7 +16,8 @@
     "react-dom": "^19.2.6",
     "@minilogg/buttons": "*",
     "@minilogg/badges": "*",
-    "@minilogg/meal-status-selector": "*"
+    "@minilogg/meal-status-selector": "*",
+    "@minilogg/navbar": "*"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

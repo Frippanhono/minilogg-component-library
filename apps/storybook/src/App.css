@@ -123,6 +123,13 @@ html {
   font-size: 0.9rem;
 }
 
+.section__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+}
+
 .section__subtitle {
   margin: var(--fc-space-2) 0 0;
   font-size: 0.85rem;

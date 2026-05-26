@@ -6,6 +6,8 @@ import { Navbar } from "@minilogg/navbar";
 import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
 import { ChildCard } from "@minilogg/child-card";
 import { PostCard } from "@minilogg/cards";
+import { TeacherCard } from "@minilogg/teacher-card";
+import { toast, Toaster } from "sonner";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -57,6 +59,7 @@ const PAINT_POST_IMAGE =
 function App() {
   return (
     <main className="app__main">
+      <Toaster richColors position="top-right" />
       <section id="navbar" className="section">
         <h2 className="section__title">Navbar</h2>
         <p className="section__hint">
@@ -238,6 +241,51 @@ function App() {
               status={child.status}
               guardians={child.guardians}
               onClick={child.onClick}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section id="teacher-card" className="section">
+        <h2 className="section__title">TeacherCard</h2>
+        <p className="section__hint">
+          Kort för personal på en avdelning – visar titel, namn och avdelning.
+        </p>
+        <h3 className="section__subtitle">Personal på avdelningen</h3>
+        <div className="row-cards">
+          {[
+            {
+              id: "anja",
+              name: "Anja Jansson",
+              title: "forskollarare",
+              department: "Solrosen",
+              onClick: () => toast.info("Öppnar Anja"),
+            },
+            {
+              id: "tove",
+              name: "Tove Karlsson",
+              title: "forskollarare",
+              department: "Solrosen",
+            },
+            {
+              id: "lena",
+              name: "Lena Johansson",
+              title: "barnskotare",
+              department: "Solrosen",
+            },
+            {
+              id: "sven",
+              name: "Sven Sköld",
+              title: { label: "Vikarie v.24", tone: "warning" },
+              department: "Maskrosen",
+            },
+          ].map((teacher) => (
+            <TeacherCard
+              key={teacher.id}
+              name={teacher.name}
+              title={teacher.title}
+              department={teacher.department}
+              onClick={teacher.onClick}
             />
           ))}
         </div>

@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import { Button } from "@minilogg/buttons";
 import { Badge } from "@minilogg/badges";
 import { MealStatusSelector } from "@minilogg/meal-status-selector";
@@ -9,6 +10,7 @@ import { PostCard } from "@minilogg/cards";
 import { TeacherCard } from "@minilogg/teacher-card";
 import { toast, Toaster } from "sonner";
 import { WeeklySchedule } from "@minilogg/weekly-schedule";
+import { Input, Textarea } from "@minilogg/inputs";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -109,6 +111,7 @@ const scheduleEvents = [
 ];
 
 function App() {
+  const [name, setName] = useState("");
   return (
     <main className="app__main">
       <Toaster richColors position="top-right" />
@@ -350,6 +353,26 @@ function App() {
           standard och staplar till en kolumn på smala skärmar.
         </p>
         <WeeklySchedule title="Vecka 19" events={scheduleEvents} />
+      </section>
+
+      <section id="forms" className="section">
+        <h2 className="section__title">Inputs</h2>
+        <div className="form-grid">
+          <Input
+            label="Name"
+            placeholder="MiniLogg"
+            hint="Visas i din profil"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            label="Email"
+            type="email"
+            placeholder="you@example.com"
+            error={!name ? "Fyll först i namn ovan" : undefined}
+          />
+          <Textarea label="Message" placeholder="Skriv något..." />
+        </div>
       </section>
     </main>
   );

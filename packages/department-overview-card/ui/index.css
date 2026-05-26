@@ -18,7 +18,6 @@
   gap: var(--fc-space-3);
   padding: var(--fc-space-7, var(--fc-space-6)) var(--fc-space-5);
 }
-@import "./tokens.css";
 
 .fc-card__department-title {
   margin: 0;

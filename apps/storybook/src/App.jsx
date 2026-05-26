@@ -8,6 +8,7 @@ import { ChildCard } from "@minilogg/child-card";
 import { PostCard } from "@minilogg/cards";
 import { TeacherCard } from "@minilogg/teacher-card";
 import { toast, Toaster } from "sonner";
+import { WeeklySchedule } from "@minilogg/weekly-schedule";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -55,6 +56,57 @@ const PAINT_POST_IMAGE =
       <circle cx="35" cy="150" r="18" fill="#8b5cf6" opacity="0.85"/>
     </svg>`,
   );
+
+const scheduleEvents = [
+  {
+    day: "mon",
+    start: "08:30",
+    end: "09:15",
+    title: "Samling & morgonsång",
+    tone: "info",
+  },
+  {
+    day: "mon",
+    start: "11:30",
+    end: "12:30",
+    title: "Lunch och vila",
+  },
+  {
+    day: "tue",
+    start: "09:00",
+    end: "11:00",
+    title: "Utflykt – skogen",
+    description: 'Tema "Höstens färger"',
+    tone: "success",
+  },
+  {
+    day: "wed",
+    start: "10:00",
+    end: "11:00",
+    title: "Utevistelse på gården",
+  },
+  {
+    day: "wed",
+    start: "14:00",
+    end: "15:30",
+    title: "Skapande verkstad",
+    description: "Kom ihåg förkläden",
+    tone: "warning",
+    onClick: () => toast.info("Öppnar Skapande verkstad"),
+  },
+  {
+    day: "thu",
+    start: "09:30",
+    title: "Sångsamling",
+    tone: "info",
+  },
+  {
+    day: "fri",
+    start: "13:00",
+    end: "14:00",
+    title: "Filmstund",
+  },
+];
 
 function App() {
   return (
@@ -289,6 +341,15 @@ function App() {
             />
           ))}
         </div>
+      </section>
+
+      <section id="weekly-schedule" className="section">
+        <h2 className="section__title">WeeklySchedule</h2>
+        <p className="section__hint">
+          Enkel veckovy med kort, tider och responsiv layout. Visar mån–fre som
+          standard och staplar till en kolumn på smala skärmar.
+        </p>
+        <WeeklySchedule title="Vecka 19" events={scheduleEvents} />
       </section>
     </main>
   );

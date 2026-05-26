@@ -154,7 +154,6 @@
     transparent
   );
 }
-@import "./tokens.css";
 
 .fc-child-card {
   background: var(--fc-color-bg-card, #fff);

@@ -3,6 +3,7 @@ import { Button } from "@minilogg/buttons";
 import { Badge } from "@minilogg/badges";
 import { MealStatusSelector } from "@minilogg/meal-status-selector";
 import { Navbar } from "@minilogg/navbar";
+import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
 
 function App() {
   return (
@@ -77,6 +78,31 @@ function App() {
             onChange={(v) => console.log(`Måltid markerad som: ${v}`)}
           />
         </div>
+      </section>
+
+      <section id="department-overview" className="section">
+        <h2 className="section__title">DepartmentOverviewCard</h2>
+        <p className="section__hint">
+          Hero/header-kort som presenterar en avdelning med namn, antal
+          inskrivna barn, antal pedagoger och aktuellt tema.
+        </p>
+        {[
+          {
+            id: "snackan",
+            name: "Snäckan",
+            childrenCount: 16,
+            teachersCount: 3,
+            theme: "Färger och former",
+          },
+        ].map((dept) => (
+          <DepartmentOverviewCard
+            key={dept.id}
+            name={dept.name}
+            childrenCount={dept.childrenCount}
+            teachersCount={dept.teachersCount}
+            theme={dept.theme}
+          />
+        ))}
       </section>
     </main>
   );

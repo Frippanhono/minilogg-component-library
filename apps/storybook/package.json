@@ -17,7 +17,8 @@
     "@minilogg/buttons": "*",
     "@minilogg/badges": "*",
     "@minilogg/meal-status-selector": "*",
-    "@minilogg/navbar": "*"
+    "@minilogg/navbar": "*",
+    "@minilogg/department-overview-card": "*"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -20,6 +20,7 @@
     "@minilogg/meal-status-selector": "*",
     "@minilogg/navbar": "*",
     "@minilogg/teacher-card": "*",
+    "@minilogg/weekly-schedule": "*",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "sonner": "^2.0.7"

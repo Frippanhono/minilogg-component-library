@@ -1,6 +1,8 @@
 # @minilogg/inputs
 
-Formulärfält med inbyggd etikett, hjälptext och felhantering.
+## Syfte
+
+Input- och Textarea-komponenterna används för att samla in information från användaren på ett tydligt och tillgängligt sätt. De erbjuder inbyggd etikett, hjälptext och felhantering för att skapa användarvänliga formulär.
 
 ## Användning
 
@@ -23,14 +25,14 @@ import { Input, Textarea } from "@minilogg/inputs";
 
 ### `Input`
 
-| Prop        | Typ          | Default  | Beskrivning                                        |
-| ----------- | ------------ | -------- | -------------------------------------------------- |
-| `label`     | `ReactNode`  | —        | Etikett ovanför fältet.                            |
-| `hint`      | `ReactNode`  | —        | Hjälptext (göms när `error` visas).                |
-| `error`     | `ReactNode`  | —        | Felmeddelande; markerar fältet som ogiltigt.       |
-| `type`      | `string`     | `"text"` | HTML input-typ (`text`, `email`, `password`, …).   |
-| `id`        | `string`     | auto     | Valfritt id; annars genereras ett unikt.           |
-| `className` | `string`     | `""`     | Extra CSS-klasser på wrappern.                     |
+| Prop        | Typ         | Default  | Beskrivning                                      |
+| ----------- | ----------- | -------- | ------------------------------------------------ |
+| `label`     | `ReactNode` | —        | Etikett ovanför fältet.                          |
+| `hint`      | `ReactNode` | —        | Hjälptext (göms när `error` visas).              |
+| `error`     | `ReactNode` | —        | Felmeddelande; markerar fältet som ogiltigt.     |
+| `type`      | `string`    | `"text"` | HTML input-typ (`text`, `email`, `password`, …). |
+| `id`        | `string`    | auto     | Valfritt id; annars genereras ett unikt.         |
+| `className` | `string`    | `""`     | Extra CSS-klasser på wrappern.                   |
 
 Övriga props (`value`, `onChange`, `placeholder`, …) vidarebefordras till `<input>`.
 
@@ -38,8 +40,8 @@ import { Input, Textarea } from "@minilogg/inputs";
 
 Samma props som `Input` förutom `type`, plus:
 
-| Prop   | Typ      | Default | Beskrivning             |
-| ------ | -------- | ------- | ----------------------- |
+| Prop   | Typ      | Default | Beskrivning              |
+| ------ | -------- | ------- | ------------------------ |
 | `rows` | `number` | `4`     | Antal synliga textrader. |
 
 ## Tillgänglighet
@@ -47,12 +49,14 @@ Samma props som `Input` förutom `type`, plus:
 - `label` kopplas till fältet via `htmlFor`/`id`.
 - `aria-invalid` och `aria-describedby` sätts automatiskt baserat på `error`/`hint`.
 
-## Feedback
+## Responsivitet
 
-Vi förbättrar `Input` och `Textarea` löpande baserat på input från användare och team.
+Komponenterna är responsiva och anpassar sig till olika skärmstorlekar. Layout och storlek fungerar bra på både mobil, surfplatta och desktop.
 
-- 💬 [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,inputs&title=%5BFeedback%5D+inputs%3A+)
-- 🐞 [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,inputs&title=%5BBug%5D+inputs%3A+)
-- ✨ [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,inputs&title=%5BFeature%5D+inputs%3A+)
+## Designval
 
-Se alla pågående diskussioner under labeln [`inputs`](../../issues?q=is%3Aissue+label%3Ainputs).
+Designen är enkel och tydlig med fokus på läsbarhet och användarvänlighet. Färg och typografi följer bibliotekets riktlinjer. Felmeddelanden och hjälptexter är tydligt separerade för att minska förvirring.
+
+## Återanvändbarhet
+
+Input och Textarea är generiska och kan användas i alla typer av formulär. De är enkla att utöka med egna props och CSS-klasser samt kan kombineras med andra komponenter.

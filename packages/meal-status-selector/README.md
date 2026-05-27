@@ -1,6 +1,9 @@
 # @minilogg/meal-status-selector
 
-Horisontell väljare med tre rundade knappar för att rapportera hur en måltid gick: **Bra**, **Okej** eller **Inte bra**.
+
+## Syfte
+
+MealStatusSelector används för att snabbt och enkelt rapportera hur en måltid upplevdes, t.ex. i förskola eller skola. Den ger ett tydligt och användarvänligt sätt att samla in feedback kring måltider.
 
 ## Användning
 
@@ -32,3 +35,15 @@ import { MealStatusSelector } from "@minilogg/meal-status-selector";
 - Tangentbord: piltangenter byter val, Home/End hoppar till första/sista.
 - Färg är inte enda signalen – ikon, text och stark vald-state används tillsammans.
 - Stora touch-ytor (≥ 52px höjd, `md` 64px, `lg` 84px).
+
+## Responsivitet
+
+Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Knapparna är stora och lätta att trycka på även på mobil.
+
+## Designval
+
+Designen är enkel och lekfull med tydliga färger, ikoner och stor touch-yta. Färg används tillsammans med ikon och text för att signalera val.
+
+## Återanvändbarhet
+
+MealStatusSelector är generisk och kan användas i olika sammanhang där feedback kring status eller upplevelse behövs. Enkel att utöka med egna alternativ och anpassa med CSS.

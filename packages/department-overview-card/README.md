@@ -1,6 +1,21 @@
 # @minilogg/department-overview-card
 
-Hero/header-kort som presenterar en avdelning i en pedagogisk lärplattform. Visar avdelningens namn, antal inskrivna barn, antal pedagoger och aktuellt tema. Bygger på `@minilogg/cards`.
+
+## Syfte
+
+DepartmentOverviewCard används för att presentera en översikt av en avdelning i pedagogiska plattformar. Den visar namn, antal barn, antal pedagoger och aktuellt tema på ett tydligt och samlat sätt.
+
+Bygger på `@minilogg/cards`.
+
+## Props
+
+| Prop            | Typ      | Beskrivning                        |
+| --------------- | -------- | ---------------------------------- |
+| `name`          | `string` | Avdelningens namn.                 |
+| `childrenCount` | `number` | Antal inskrivna barn.              |
+| `teachersCount` | `number` | Antal pedagoger.                   |
+| `theme`         | `string` | Aktuellt tema för avdelningen.     |
+| `className`     | `string` | (Valfritt) Extra CSS-klasser.      |
 
 ```jsx
 import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
@@ -14,3 +29,19 @@ import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
 ```
 
 Passar visuellt ihop med `ChildCard`, `TeacherCard`, `WeeklySchedule`, `MealStatusSelector` och `MessageCard`.
+
+## Accessibility
+
+Komponenten använder semantiska HTML-element och är tillgänglig för skärmläsare. Viktig information presenteras alltid med text, inte bara färg. Fokusmarkeringar och tangentbordsstöd finns för interaktiva delar.
+
+## Responsivitet
+
+DepartmentOverviewCard är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i grid och som fristående kort på mobil, surfplatta och desktop.
+
+## Designval
+
+Designen är tydlig och modern med fokus på överskådlighet. Färg, typografi och ikoner används för att snabbt signalera avdelningens status och tema. Visuellt anpassad för att passa ihop med övriga kort i biblioteket.
+
+## Återanvändbarhet
+
+Komponenten är generisk och kan användas i olika vyer där avdelningsinformation behöver presenteras. Enkel att utöka med fler fält eller anpassa med egna CSS-klasser.

@@ -1,6 +1,9 @@
 # @minilogg/dropdowns
 
-Tillgänglig meny som öppnas vid klick.
+
+## Syfte
+
+Dropdown-komponenten används för att visa en lista med valbara alternativ i en meny som öppnas vid klick. Den hjälper till att spara utrymme och skapa ett mer fokuserat gränssnitt när många valmöjligheter finns.
 
 ## Användning
 
@@ -40,3 +43,19 @@ import { Dropdown } from "@minilogg/dropdowns";
 - Tangentbord: ↑/↓ navigerar, Home/End hoppar, Enter/Space väljer, Esc stänger, Tab stänger utan att flytta fokus tillbaka.
 - Typeahead: skriv en bokstav för att hoppa till nästa alternativ som börjar med tecknet.
 - Inaktiverade items kan inte väljas och hoppas över vid tangentbordsnavigering.
+
+## Accessibility
+
+Dropdown använder semantiska HTML-element och ARIA-attribut (`aria-haspopup`, `aria-expanded`, `role="menu"`, `role="menuitem"`) för att säkerställa tillgänglighet. Tangentbordsnavigation och typeahead-stöd finns, och färg används aldrig som enda signal.
+
+## Responsivitet
+
+Dropdown är responsiv och anpassar sig till olika skärmstorlekar. Menyn positioneras automatiskt och fungerar lika bra på mobil, surfplatta och desktop.
+
+## Designval
+
+Designen är enkel och tydlig med hög kontrast och tydliga markeringar för valda och inaktiverade alternativ. Menyn följer bibliotekets färgpalett och typografi.
+
+## Återanvändbarhet
+
+Dropdown är generisk och kan användas i många olika sammanhang där en lista med val behövs. Den är enkel att utöka med egna props och kan kombineras med andra komponenter.

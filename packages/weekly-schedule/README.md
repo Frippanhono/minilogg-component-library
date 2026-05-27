@@ -1,7 +1,9 @@
 # @minilogg/weekly-schedule
 
-En enkel veckovy med kort, tider, layout och responsivitet. Inte ett fullt
-kalendersystem – fokus ligger på att visa en överskådlig vecka.
+
+## Syfte
+
+WeeklySchedule används för att visa en överskådlig veckovy med händelser, tider och layout. Den hjälper användaren att snabbt få en överblick över planerade aktiviteter utan att behöva navigera i ett komplext kalendersystem.
 
 ## Användning
 
@@ -52,3 +54,15 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 - Bred skärm: en kolumn per dag (CSS-grid med `repeat(N, 1fr)`).
 - Smal skärm (≤ 720 px): staplas till en kolumn. Då visas fullt dagsnamn
   (`label`) som rubrik i stället för den korta etiketten (`short`).
+
+## Accessibility
+
+WeeklySchedule använder semantiska HTML-element och är tillgänglig för skärmläsare. Händelser och dagar presenteras alltid med text och/eller ikon, inte bara färg. Tangentbordsstöd finns för klickbara händelser.
+
+## Designval
+
+Designen är enkel och tydlig med fokus på överskådlighet. Färg, typografi och grid-layout används för att skapa struktur och snabb överblick. Färgtoner signalerar typ av händelse.
+
+## Återanvändbarhet
+
+WeeklySchedule är generisk och kan användas i alla sammanhang där en veckovy behövs. Den är enkel att utöka med fler fält, anpassa med egna CSS-klasser och kombinera med andra komponenter.

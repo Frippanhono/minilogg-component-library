@@ -11,6 +11,8 @@ import { TeacherCard } from "@minilogg/teacher-card";
 import { toast, Toaster } from "sonner";
 import { WeeklySchedule } from "@minilogg/weekly-schedule";
 import { Input, Textarea } from "@minilogg/inputs";
+import { Modal } from "@minilogg/modals";
+import { ToastProvider } from "@minilogg/toasts";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -112,269 +114,319 @@ const scheduleEvents = [
 
 function App() {
   const [name, setName] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   return (
-    <main className="app__main">
-      <Toaster richColors position="top-right" />
-      <section id="navbar" className="section">
-        <h2 className="section__title">Navbar</h2>
-        <p className="section__hint">
-          Navigeringsmeny som visas högst upp på sidan i desktop och fast längst
-          ner i mobilvy. Stödjer ikoner, avatarer och en markerad aktiv länk.
-        </p>
+    <ToastProvider position="top-right">
+      <div className="app__main">
+        <Toaster richColors position="top-right" />
+        <section id="navbar" className="section">
+          <h2 className="section__title">Navbar</h2>
+          <p className="section__hint">
+            Navigeringsmeny som visas högst upp på sidan i desktop och fast
+            längst ner i mobilvy. Stödjer ikoner, avatarer och en markerad aktiv
+            länk.
+          </p>
 
-        <h3 className="section__subtitle">Desktopvy</h3>
-        <Navbar />
+          <h3 className="section__subtitle">Desktopvy</h3>
+          <Navbar />
 
-        <h3 className="section__subtitle">Mobilvy</h3>
-        <div className="phone-frame" aria-label="Förhandsvisning i mobilvy">
-          <div className="phone-frame__notch" aria-hidden="true" />
-          <div className="phone-frame__screen">
-            <div className="phone-frame__content">
-              <p className="phone-frame__placeholder">
-                Innehåll i appen visas här. Navigeringen är fast längst ner så
-                den alltid är inom tummens räckhåll.
-              </p>
-            </div>
-            <div className="phone-frame__navbar">
-              <Navbar />
+          <h3 className="section__subtitle">Mobilvy</h3>
+          <div className="phone-frame" aria-label="Förhandsvisning i mobilvy">
+            <div className="phone-frame__notch" aria-hidden="true" />
+            <div className="phone-frame__screen">
+              <div className="phone-frame__content">
+                <p className="phone-frame__placeholder">
+                  Innehåll i appen visas här. Navigeringen är fast längst ner så
+                  den alltid är inom tummens räckhåll.
+                </p>
+              </div>
+              <div className="phone-frame__navbar">
+                <Navbar />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section">
-        <h2 className="section__title">Buttons</h2>
+        <section className="section">
+          <h2 className="section__title">Buttons</h2>
 
-        <div className="section__row">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="danger">Danger</Button>
-          <Button variant="ghost">Ghost</Button>
-          <Button variant="primary" disabled>
-            Disabled
-          </Button>
-        </div>
+          <div className="section__row">
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="danger">Danger</Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="primary" disabled>
+              Disabled
+            </Button>
+          </div>
 
-        <div className="section__row">
-          <Button size="sm">Small</Button>
-          <Button size="md">Medium</Button>
-          <Button size="lg">Large</Button>
-        </div>
-      </section>
+          <div className="section__row">
+            <Button size="sm">Small</Button>
+            <Button size="md">Medium</Button>
+            <Button size="lg">Large</Button>
+          </div>
+        </section>
 
-      <section id="badges" className="section">
-        <h2 className="section__title">Badges</h2>
-        <div className="section__row">
-          <Badge>Neutral</Badge>
-          <Badge variant="info">Info</Badge>
-          <Badge variant="success">Success</Badge>
-          <Badge variant="warning">Warning</Badge>
-          <Badge variant="danger">Danger</Badge>
-        </div>
-      </section>
+        <section id="badges" className="section">
+          <h2 className="section__title">Badges</h2>
+          <div className="section__row">
+            <Badge>Neutral</Badge>
+            <Badge variant="info">Info</Badge>
+            <Badge variant="success">Success</Badge>
+            <Badge variant="warning">Warning</Badge>
+            <Badge variant="danger">Danger</Badge>
+          </div>
+        </section>
 
-      <section id="cards" className="section">
-        <h2 className="section__title">Cards</h2>
-        <p className="section__hint">
-          Generella kort som grupperar relaterat innehåll. Med modifieraren
-          <code> fc-card--row </code>kan ett kort visa en bild till vänster och
-          innehåll till höger – passar t.ex. för en "Senaste inlägg"-lista.
-        </p>
+        <section id="cards" className="section">
+          <h2 className="section__title">Cards</h2>
+          <p className="section__hint">
+            Generella kort som grupperar relaterat innehåll. Med modifieraren
+            <code> fc-card--row </code>kan ett kort visa en bild till vänster
+            och innehåll till höger – passar t.ex. för en "Senaste
+            inlägg"-lista.
+          </p>
 
-        <h3 className="section__subtitle">Senaste inlägg</h3>
-        <div className="stack-cards">
+          <h3 className="section__subtitle">Senaste inlägg</h3>
+          <div className="stack-cards">
+            {[
+              {
+                id: "forest",
+                image: FOREST_POST_IMAGE,
+                imageAlt: "Höstlöv och gröna stövlar i skogen",
+                title: "Utflykt till skogen – vad vi hittade bland löven!",
+                date: "23 april",
+              },
+              {
+                id: "paint",
+                image: PAINT_POST_IMAGE,
+                imageAlt: "Färgglada penseldrag och färgklickar",
+                title: "Måleri på avdelningen – färgglada konstverk",
+                date: "18 april",
+              },
+            ].map((post) => (
+              <PostCard
+                key={post.id}
+                image={post.image}
+                imageAlt={post.imageAlt}
+                title={post.title}
+                date={post.date}
+                href="#cards"
+                onClick={() => toast.info(`Öppnar: ${post.title}`)}
+              />
+            ))}
+          </div>
+        </section>
+
+        <section id="meal-status" className="section">
+          <h2 className="section__title">Meal Status Selector</h2>
+          <p className="section__hint">
+            Horisontell väljare för att rapportera hur en måltid gick. Stora
+            touch-ytor, tydligt vald-state och stöd för tangentbord.
+          </p>
+          <div style={{ maxWidth: 520 }}>
+            <MealStatusSelector
+              defaultValue="bra"
+              onChange={(v) => console.log(`Måltid markerad som: ${v}`)}
+            />
+          </div>
+        </section>
+
+        <section id="department-overview" className="section">
+          <h2 className="section__title">DepartmentOverviewCard</h2>
+          <p className="section__hint">
+            Hero/header-kort som presenterar en avdelning med namn, antal
+            inskrivna barn, antal pedagoger och aktuellt tema.
+          </p>
           {[
             {
-              id: "forest",
-              image: FOREST_POST_IMAGE,
-              imageAlt: "Höstlöv och gröna stövlar i skogen",
-              title: "Utflykt till skogen – vad vi hittade bland löven!",
-              date: "23 april",
+              id: "snackan",
+              name: "Snäckan",
+              childrenCount: 16,
+              teachersCount: 3,
+              theme: "Färger och former",
             },
-            {
-              id: "paint",
-              image: PAINT_POST_IMAGE,
-              imageAlt: "Färgglada penseldrag och färgklickar",
-              title: "Måleri på avdelningen – färgglada konstverk",
-              date: "18 april",
-            },
-          ].map((post) => (
-            <PostCard
-              key={post.id}
-              image={post.image}
-              imageAlt={post.imageAlt}
-              title={post.title}
-              date={post.date}
-              href="#cards"
-              onClick={() => toast.info(`Öppnar: ${post.title}`)}
+          ].map((dept) => (
+            <DepartmentOverviewCard
+              key={dept.id}
+              name={dept.name}
+              childrenCount={dept.childrenCount}
+              teachersCount={dept.teachersCount}
+              theme={dept.theme}
             />
           ))}
-        </div>
-      </section>
+        </section>
 
-      <section id="meal-status" className="section">
-        <h2 className="section__title">Meal Status Selector</h2>
-        <p className="section__hint">
-          Horisontell väljare för att rapportera hur en måltid gick. Stora
-          touch-ytor, tydligt vald-state och stöd för tangentbord.
-        </p>
-        <div style={{ maxWidth: 520 }}>
-          <MealStatusSelector
-            defaultValue="bra"
-            onChange={(v) => console.log(`Måltid markerad som: ${v}`)}
-          />
-        </div>
-      </section>
+        <section id="child-card" className="section">
+          <h2 className="section__title">ChildCard</h2>
+          <p className="section__hint">
+            Pedagogiskt kort för att presentera ett barn med namn, avdelning,
+            status och avatar.
+          </p>
+          <div className="stack-cards">
+            {[
+              {
+                id: "alma",
+                name: "Alma Andersson",
+                department: "Solrosen",
+                status: "present",
+                guardians: ["Anja Andersson", "Per Andersson"],
+                onClick: () => toast.info("Öppnar Alma"),
+              },
+              {
+                id: "adam",
+                name: "Adam Persson",
+                department: "Solrosen",
+                status: "present",
+                guardians: ["Anja Persson", "Peter Persson"],
+              },
+              {
+                id: "cleo",
+                name: "Cleo Cederlund",
+                department: "Maskrosen",
+                status: "leave",
+                guardians: ["Sara Cederlund"],
+              },
+              {
+                id: "doris",
+                name: "Doris Dahl",
+                department: "Smörblomman",
+                status: { label: "Hämtas 14:30", tone: "info" },
+                guardians: ["Mikael Dahl", "Lisa Dahl"],
+              },
+            ].map((child) => (
+              <ChildCard
+                key={child.id}
+                name={child.name}
+                department={child.department}
+                status={child.status}
+                guardians={child.guardians}
+                onClick={child.onClick}
+              />
+            ))}
+          </div>
+        </section>
 
-      <section id="department-overview" className="section">
-        <h2 className="section__title">DepartmentOverviewCard</h2>
-        <p className="section__hint">
-          Hero/header-kort som presenterar en avdelning med namn, antal
-          inskrivna barn, antal pedagoger och aktuellt tema.
-        </p>
-        {[
-          {
-            id: "snackan",
-            name: "Snäckan",
-            childrenCount: 16,
-            teachersCount: 3,
-            theme: "Färger och former",
-          },
-        ].map((dept) => (
-          <DepartmentOverviewCard
-            key={dept.id}
-            name={dept.name}
-            childrenCount={dept.childrenCount}
-            teachersCount={dept.teachersCount}
-            theme={dept.theme}
-          />
-        ))}
-      </section>
+        <section id="teacher-card" className="section">
+          <h2 className="section__title">TeacherCard</h2>
+          <p className="section__hint">
+            Kort för personal på en avdelning – visar titel, namn och avdelning.
+          </p>
+          <h3 className="section__subtitle">Personal på avdelningen</h3>
+          <div className="row-cards">
+            {[
+              {
+                id: "anja",
+                name: "Anja Jansson",
+                title: "forskollarare",
+                department: "Solrosen",
+                onClick: () => toast.info("Öppnar Anja"),
+              },
+              {
+                id: "tove",
+                name: "Tove Karlsson",
+                title: "forskollarare",
+                department: "Solrosen",
+              },
+              {
+                id: "lena",
+                name: "Lena Johansson",
+                title: "barnskotare",
+                department: "Solrosen",
+              },
+              {
+                id: "sven",
+                name: "Sven Sköld",
+                title: { label: "Vikarie v.24", tone: "warning" },
+                department: "Maskrosen",
+              },
+            ].map((teacher) => (
+              <TeacherCard
+                key={teacher.id}
+                name={teacher.name}
+                title={teacher.title}
+                department={teacher.department}
+                onClick={teacher.onClick}
+              />
+            ))}
+          </div>
+        </section>
 
-      <section id="child-card" className="section">
-        <h2 className="section__title">ChildCard</h2>
-        <p className="section__hint">
-          Pedagogiskt kort för att presentera ett barn med namn, avdelning,
-          status och avatar.
-        </p>
-        <div className="stack-cards">
-          {[
-            {
-              id: "alma",
-              name: "Alma Andersson",
-              department: "Solrosen",
-              status: "present",
-              guardians: ["Anja Andersson", "Per Andersson"],
-              onClick: () => toast.info("Öppnar Alma"),
-            },
-            {
-              id: "adam",
-              name: "Adam Persson",
-              department: "Solrosen",
-              status: "present",
-              guardians: ["Anja Persson", "Peter Persson"],
-            },
-            {
-              id: "cleo",
-              name: "Cleo Cederlund",
-              department: "Maskrosen",
-              status: "leave",
-              guardians: ["Sara Cederlund"],
-            },
-            {
-              id: "doris",
-              name: "Doris Dahl",
-              department: "Smörblomman",
-              status: { label: "Hämtas 14:30", tone: "info" },
-              guardians: ["Mikael Dahl", "Lisa Dahl"],
-            },
-          ].map((child) => (
-            <ChildCard
-              key={child.id}
-              name={child.name}
-              department={child.department}
-              status={child.status}
-              guardians={child.guardians}
-              onClick={child.onClick}
+        <section id="weekly-schedule" className="section">
+          <h2 className="section__title">WeeklySchedule</h2>
+          <p className="section__hint">
+            Enkel veckovy med kort, tider och responsiv layout. Visar mån–fre
+            som standard och staplar till en kolumn på smala skärmar.
+          </p>
+          <WeeklySchedule title="Vecka 19" events={scheduleEvents} />
+        </section>
+
+        <section id="forms" className="section">
+          <h2 className="section__title">Inputs</h2>
+          <div className="form-grid">
+            <Input
+              label="Name"
+              placeholder="MiniLogg"
+              hint="Visas i din profil"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-          ))}
-        </div>
-      </section>
-
-      <section id="teacher-card" className="section">
-        <h2 className="section__title">TeacherCard</h2>
-        <p className="section__hint">
-          Kort för personal på en avdelning – visar titel, namn och avdelning.
-        </p>
-        <h3 className="section__subtitle">Personal på avdelningen</h3>
-        <div className="row-cards">
-          {[
-            {
-              id: "anja",
-              name: "Anja Jansson",
-              title: "forskollarare",
-              department: "Solrosen",
-              onClick: () => toast.info("Öppnar Anja"),
-            },
-            {
-              id: "tove",
-              name: "Tove Karlsson",
-              title: "forskollarare",
-              department: "Solrosen",
-            },
-            {
-              id: "lena",
-              name: "Lena Johansson",
-              title: "barnskotare",
-              department: "Solrosen",
-            },
-            {
-              id: "sven",
-              name: "Sven Sköld",
-              title: { label: "Vikarie v.24", tone: "warning" },
-              department: "Maskrosen",
-            },
-          ].map((teacher) => (
-            <TeacherCard
-              key={teacher.id}
-              name={teacher.name}
-              title={teacher.title}
-              department={teacher.department}
-              onClick={teacher.onClick}
+            <Input
+              label="Email"
+              type="email"
+              placeholder="you@example.com"
+              error={!name ? "Fyll först i namn ovan" : undefined}
             />
-          ))}
-        </div>
-      </section>
+            <Textarea label="Message" placeholder="Skriv något..." />
+          </div>
+        </section>
 
-      <section id="weekly-schedule" className="section">
-        <h2 className="section__title">WeeklySchedule</h2>
-        <p className="section__hint">
-          Enkel veckovy med kort, tider och responsiv layout. Visar mån–fre som
-          standard och staplar till en kolumn på smala skärmar.
-        </p>
-        <WeeklySchedule title="Vecka 19" events={scheduleEvents} />
-      </section>
+        <section id="feedback" className="section">
+          <h2 className="section__title">Modal & Toasts</h2>
+          <div className="row">
+            <Button onClick={() => setModalOpen(true)}>Open modal</Button>
+            <Button variant="secondary" onClick={() => toast.success("Saved!")}>
+              Toast: success
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => toast.warning("Heads up!")}
+            >
+              Toast: warning
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => toast.error("Something failed")}
+            >
+              Toast: error
+            </Button>
+          </div>
+        </section>
 
-      <section id="forms" className="section">
-        <h2 className="section__title">Inputs</h2>
-        <div className="form-grid">
-          <Input
-            label="Name"
-            placeholder="MiniLogg"
-            hint="Visas i din profil"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Input
-            label="Email"
-            type="email"
-            placeholder="you@example.com"
-            error={!name ? "Fyll först i namn ovan" : undefined}
-          />
-          <Textarea label="Message" placeholder="Skriv något..." />
-        </div>
-      </section>
-    </main>
+        <Modal
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          title="Bekräfta åtgärd"
+          footer={
+            <>
+              <Button variant="secondary" onClick={() => setModalOpen(false)}>
+                Avbryt
+              </Button>
+              <Button
+                onClick={() => {
+                  setModalOpen(false);
+                  toast.success("Bekräftad!");
+                }}
+              >
+                Bekräfta
+              </Button>
+            </>
+          }
+        >
+          <p>Är du säker på att du vill fortsätta? Detta är bara ett demo.</p>
+        </Modal>
+      </div>
+    </ToastProvider>
   );
 }
 

@@ -13,6 +13,7 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 import { Input, Textarea } from "@minilogg/inputs";
 import { Modal } from "@minilogg/modals";
 import { ToastProvider } from "@minilogg/toasts";
+import { MessageCard, NoticeCard } from "@minilogg/message-card";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -349,6 +350,84 @@ function App() {
                 onClick={teacher.onClick}
               />
             ))}
+          </div>
+        </section>
+
+        <section id="message-card" className="section">
+          <h2 className="section__title">MessageCard / NoticeCard</h2>
+          <p className="section__hint">
+            Kort för information mellan pedagog och vårdnadshavare – t.ex.
+            meddelanden, anslag och aviseringar.
+          </p>
+          <div className="stack-cards">
+            {[
+              {
+                id: "msg-utveckling",
+                type: "message",
+                sender: { name: "Anna Lärare", role: "teacher" },
+                recipient: { name: "Per Persson", role: "guardian" },
+                subject: "Utvecklingssamtal v.24",
+                preview:
+                  "Hej Per! Vill du boka tid för utvecklingssamtal nästa vecka? Jag har tider tisdag eftermiddag och torsdag förmiddag.",
+                timestamp: "09:42",
+                unread: true,
+                attachments: 1,
+                onClick: () => toast.info("Öppnar meddelande"),
+                actions: (
+                  <>
+                    <Button size="sm" variant="secondary">
+                      Markera läst
+                    </Button>
+                    <Button size="sm">Svara</Button>
+                  </>
+                ),
+              },
+              {
+                id: "msg-sjuk",
+                type: "message",
+                sender: { name: "Lisa Dahl", role: "guardian" },
+                recipient: { name: "Solrosen", role: "teacher" },
+                subject: "Doris är sjuk idag",
+                preview: "Hej! Doris vaknade med feber så hon stannar hemma.",
+                timestamp: "07:15",
+              },
+              {
+                id: "notice-planering",
+                type: "notice",
+                sender: { name: "Förskolan Solrosen", role: "system" },
+                subject: "Stängt fredag den 7 juni – planeringsdag",
+                priority: "high",
+                timestamp: new Date(),
+                attachments: 2,
+                body: "Förskolan håller stängt för planeringsdag. Behöver du barnomsorg kontakta kommunens jourförskola.",
+              },
+            ].map((item) =>
+              item.type === "notice" ? (
+                <NoticeCard
+                  key={item.id}
+                  sender={item.sender}
+                  subject={item.subject}
+                  priority={item.priority}
+                  timestamp={item.timestamp}
+                  attachments={item.attachments}
+                >
+                  {item.body}
+                </NoticeCard>
+              ) : (
+                <MessageCard
+                  key={item.id}
+                  sender={item.sender}
+                  recipient={item.recipient}
+                  subject={item.subject}
+                  preview={item.preview}
+                  timestamp={item.timestamp}
+                  unread={item.unread}
+                  attachments={item.attachments}
+                  onClick={item.onClick}
+                  actions={item.actions}
+                />
+              ),
+            )}
           </div>
         </section>
 

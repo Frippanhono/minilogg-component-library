@@ -14,6 +14,9 @@ import { Input, Textarea } from "@minilogg/inputs";
 import { Modal } from "@minilogg/modals";
 import { ToastProvider } from "@minilogg/toasts";
 import { MessageCard, NoticeCard } from "@minilogg/message-card";
+import { Dropdown } from "@minilogg/dropdowns";
+// import { Tabs } from "@minilogg/tabs";
+import TabsDemo from "./TabsDemo";
 
 // SVG-placeholder: höstlöv med gröna stövlar (för "Senaste inlägg"-kortet).
 const FOREST_POST_IMAGE =
@@ -429,6 +432,24 @@ function App() {
               ),
             )}
           </div>
+        </section>
+
+        <section id="dropdown-tabs" className="section">
+          <h2 className="section__title">Dropdown & Tabs</h2>
+          <div className="row">
+            <Dropdown
+              label="Choose action"
+              items={[
+                { label: "Edit", value: "edit" },
+                { label: "Duplicate", value: "duplicate" },
+                { label: "Archive", value: "archive" },
+                { label: "Delete", value: "delete", disabled: true },
+              ]}
+              onSelect={(item) => toast.info(`Selected: ${item.label}`)}
+            />
+          </div>
+
+          <TabsDemo toast={toast} />
         </section>
 
         <section id="weekly-schedule" className="section">

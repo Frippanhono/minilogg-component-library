@@ -1,7 +1,11 @@
 # @minilogg/cards
 
-Kortprimitiver för att gruppera relaterat innehåll. Domänspecifika kort
-(`StatCard`, `ChildCard`, `MessageCard`) ligger i egna paket och bygger ovanpå dessa.
+
+## Syfte
+
+Card-komponenterna används för att gruppera och presentera relaterat innehåll på ett strukturerat och visuellt tilltalande sätt. De fungerar som byggblock för mer komplexa UI-element och används ofta för att lyfta fram information, samla åtgärder eller skapa tydliga sektioner.
+
+Domänspecifika kort (`StatCard`, `ChildCard`, `MessageCard`) ligger i egna paket och bygger ovanpå dessa.
 
 ## Användning
 
@@ -57,6 +61,22 @@ Alla komponenter tar `children` och `className` och vidarebefordrar övriga prop
 | `selected`    | `boolean`                                                        | `false`     | Visuell markering för valt/aktivt kort.    |
 | `as`          | `keyof JSX.IntrinsicElements`                                    | `"div"`     | Underliggande element.                     |
 | `onClick`     | `(e) => void`                                                    | –           | Aktiverar tangentbordsstöd (Enter/Space).  |
+
+## Accessibility
+
+Card-komponenterna är byggda med semantiska HTML-element och stödjer tangentbordsnavigation samt skärmläsare. Interaktiva kort har tydliga fokusmarkeringar och använder aldrig enbart färg för att signalera status eller val.
+
+## Responsivitet
+
+Kort är responsiva och anpassar sig till olika skärmstorlekar med hjälp av flexibla layouter och CSS. De fungerar lika bra i grid, listor eller som fristående element på mobil, surfplatta och desktop.
+
+## Designval
+
+Designen är enkel, modern och följer bibliotekets färgpalett och typografi. Varianter och toner används för att skapa visuell hierarki och tydlighet. Rundade hörn, skuggor och accentfärger används för att särskilja olika typer av kort.
+
+## Återanvändbarhet
+
+Card-komponenterna är generiska och kan användas i många olika sammanhang. De är enkla att utöka med egna props, CSS-klasser och kan kombineras med andra komponenter för att bygga mer avancerade UI-lösningar.
 
 ## Domänkort
 

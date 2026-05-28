@@ -63,9 +63,16 @@ Storybook visar alla komponenter med kodexempel och interaktiva kontroller.
 
 Alla komponenter testas med Vitest och Testing Library. Kör `npm test` för att köra alla tester.
 
+
 ## Komponenter
 
-Varje komponent finns som ett eget npm-paket i `packages/` och har egen README, stories och tester. Exempel:
+Varje komponent finns som ett eget npm-paket i `packages/` och har egen README, stories och tester.
+
+**Nyhet: Hero navigation i Storybook**
+
+Storybook har nu en hero navigation högst upp på sidan som samlar och länkar till alla komponenter för snabb översikt och navigering. Detta är en del av Storybook-upplevelsen och inte en återanvändbar komponent i biblioteket.
+
+Exempel på komponenter:
 
 - badges
 - button

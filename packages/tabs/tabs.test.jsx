@@ -10,6 +10,32 @@ const tabs = [
 ];
 
 describe("Tabs", () => {
+  it("renders tablist and all tabs", () => {
+    render(<Tabs tabs={tabs} />);
+    const tablist = screen.getByRole("tablist");
+    expect(tablist).toBeInTheDocument();
+    const tabButtons = screen.getAllByRole("tab");
+    expect(tabButtons).toHaveLength(3);
+    tabs.forEach((tab) => {
+      expect(screen.getByRole("tab", { name: tab.label })).toBeInTheDocument();
+    });
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<Tabs tabs={tabs} />);
+    const tablist = screen.getByRole("tablist");
+    expect(tablist).toHaveAttribute("aria-orientation");
+    const tabButtons = screen.getAllByRole("tab");
+    tabButtons.forEach((tab) => {
+      expect(tab).toHaveAttribute("aria-selected");
+      expect(tab).toHaveAttribute("tabindex");
+      expect(tab.id).toBeTruthy();
+    });
+    const tabPanels = screen.getAllByRole("tabpanel");
+    tabPanels.forEach((panel) => {
+      expect(panel).toHaveAttribute("aria-labelledby");
+    });
+  });
   it("renders tablist with first tab active by default", () => {
     render(<Tabs tabs={tabs} />);
     const tabButtons = screen.getAllByRole("tab");

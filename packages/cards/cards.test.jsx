@@ -96,6 +96,32 @@ describe("Card primitives", () => {
     expect(onClick).toHaveBeenCalledTimes(3);
   });
 
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = require("@testing-library/user-event").default.setup();
+    const onClick = vi.fn();
+    render(
+      <Card onClick={onClick} data-testid="kbd">
+        keyboard
+      </Card>,
+    );
+    const el = screen.getByTestId("kbd");
+    el.focus();
+    expect(el).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <Card aria-label="Kort för information" data-testid="a11y">
+        Info
+      </Card>,
+    );
+    const el = screen.getByTestId("a11y");
+    expect(el).toHaveAttribute("aria-label", "Kort för information");
+  });
+
   it("marks selected cards", () => {
     render(
       <Card selected data-testid="c">

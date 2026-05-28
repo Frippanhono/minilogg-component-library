@@ -4,6 +4,16 @@ import userEvent from "@testing-library/user-event";
 import { Modal } from "./ui";
 
 describe("Modal", () => {
+  it("renders open modal with content and title", () => {
+    render(
+      <Modal open onClose={() => {}} title="Rubrik">
+        Innehåll
+      </Modal>,
+    );
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByText("Innehåll")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Rubrik" })).toBeInTheDocument();
+  });
   it("renders nothing when closed", () => {
     render(
       <Modal open={false} onClose={() => {}}>
@@ -61,6 +71,32 @@ describe("Modal", () => {
     );
     await user.keyboard("{Escape}");
     expect(onClose).toHaveBeenCalled();
+  });
+
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    render(
+      <Modal open onClose={onClose} title="KbdTest" footer={<button>OK</button>}>
+        <button>Fokus</button>
+      </Modal>,
+    );
+    const btn = screen.getByRole("button", { name: "Fokus" });
+    btn.focus();
+    expect(btn).toHaveFocus();
+    await user.keyboard("{Tab}");
+    expect(screen.getByRole("button", { name: "OK" })).toHaveFocus();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <Modal open onClose={() => {}} title="A11y" aria-label="Dialogtest">
+        Test
+      </Modal>,
+    );
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveAttribute("aria-label", "Dialogtest");
+    expect(dialog).toHaveAttribute("aria-modal", "true");
   });
 
   it("locks body scroll while open", () => {

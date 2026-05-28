@@ -154,6 +154,28 @@ describe("MessageCard / NoticeCard", () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = require("@testing-library/user-event").default.setup();
+    const onClick = vi.fn();
+    render(
+      <MessageCard data-testid="kbd" sender="Klara" subject="Hej" onClick={onClick} />,
+    );
+    const el = screen.getByTestId("kbd");
+    el.focus();
+    expect(el).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <MessageCard aria-label="Meddelandekort" data-testid="a11y" sender="A" subject="S" />,
+    );
+    const el = screen.getByTestId("a11y");
+    expect(el).toHaveAttribute("aria-label", "Meddelandekort");
+  });
+
   it("renders custom actions in the footer", () => {
     render(
       <MessageCard

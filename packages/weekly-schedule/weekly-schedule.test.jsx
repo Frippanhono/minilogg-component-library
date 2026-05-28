@@ -7,6 +7,24 @@ import {
 } from "./ui";
 
 describe("WeeklySchedule", () => {
+  it("renders all days and event containers", () => {
+    render(<WeeklySchedule days={WEEKDAYS_SV} />);
+    WEEKDAYS_SV.forEach((d) => {
+      expect(screen.getByText(d.label)).toBeInTheDocument();
+    });
+    expect(screen.getAllByTestId("fc-week__day").length).toBeGreaterThan(0);
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<WeeklySchedule title="A11y" />);
+    const heading = screen.getByRole("heading", { name: "A11y" });
+    expect(heading).toHaveAttribute("tabindex");
+    // Each day container should be a region or have aria-label
+    const days = screen.getAllByTestId("fc-week__day");
+    days.forEach((day) => {
+      expect(day).toHaveAttribute("aria-label");
+    });
+  });
   it("renders default Mon-Fri days", () => {
     render(<WeeklySchedule />);
     expect(screen.getByText("Mån")).toBeInTheDocument();
@@ -76,6 +94,28 @@ describe("WeeklySchedule", () => {
 });
 
 describe("ScheduleEvent", () => {
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(<ScheduleEvent title="Kbd" onClick={onClick} />);
+    const btn = screen.getByRole("button", { name: /Kbd/ });
+    btn.focus();
+    expect(btn).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<ScheduleEvent title="A11yEvent" start="10:00" />);
+    const el = screen.getByText("A11yEvent").closest(".fc-week__event");
+    expect(el).toHaveAttribute("tabindex");
+    // If interactive, should have role
+    render(<ScheduleEvent title="A11yBtn" onClick={() => {}} />);
+    const btn = screen.getByRole("button", { name: /A11yBtn/ });
+    expect(btn).toHaveAttribute("tabindex");
+    expect(btn).toHaveAttribute("role");
+  });
   it("renders title, time range and description", () => {
     render(
       <ScheduleEvent

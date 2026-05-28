@@ -4,6 +4,13 @@ import userEvent from "@testing-library/user-event";
 import { MealStatusSelector } from "./ui";
 
 describe("MealStatusSelector", () => {
+  it("renders radiogroup and all radio buttons", () => {
+    render(<MealStatusSelector label="Test" />);
+    const group = screen.getByRole("radiogroup", { name: "Test" });
+    expect(group).toBeInTheDocument();
+    const radios = screen.getAllByRole("radio");
+    expect(radios.length).toBeGreaterThan(0);
+  });
   it("renders three radio buttons inside a radiogroup", () => {
     render(<MealStatusSelector label="Hur gick måltiden?" />);
     const group = screen.getByRole("radiogroup", {
@@ -77,5 +84,15 @@ describe("MealStatusSelector", () => {
     render(<MealStatusSelector disabled onChange={onChange} />);
     await user.click(screen.getByRole("radio", { name: /Okej/ }));
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<MealStatusSelector label="A11y" aria-label="Måltidsstatus" />);
+    const group = screen.getByRole("radiogroup", { name: "A11y" });
+    expect(group).toHaveAttribute("aria-label", "Måltidsstatus");
+    const radios = screen.getAllByRole("radio");
+    radios.forEach((radio) => {
+      expect(radio).toHaveAttribute("aria-checked");
+    });
   });
 });

@@ -9,6 +9,13 @@ const links = [
 ];
 
 describe("Navbar", () => {
+  it("renders navigation landmark and all links", () => {
+    render(<Navbar brand="TestBrand" links={links} />);
+    const nav = screen.getByRole("navigation");
+    expect(nav).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Home" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "About" })).toBeInTheDocument();
+  });
   it("renders brand, links and actions with landmark", () => {
     render(
       <Navbar
@@ -61,6 +68,27 @@ describe("Navbar", () => {
     render(<Navbar brand="B" links={links} onNavigate={onNavigate} />);
     await user.click(screen.getByRole("link", { name: "Home" }));
     expect(onNavigate).toHaveBeenCalledWith(links[0]);
+  });
+
+  it("is keyboard focusable and can navigate with Tab", async () => {
+    const user = userEvent.setup();
+    render(<Navbar brand="B" links={links} />);
+    const home = screen.getByRole("link", { name: "Home" });
+    const about = screen.getByRole("link", { name: "About" });
+    home.focus();
+    expect(home).toHaveFocus();
+    await user.keyboard("{Tab}");
+    expect(about).toHaveFocus();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<Navbar brand="B" links={links} ariaLabel="A11yNav" />);
+    const nav = screen.getByRole("navigation", { name: "A11yNav" });
+    expect(nav).toBeInTheDocument();
+    const linksEls = screen.getAllByRole("link");
+    linksEls.forEach((link) => {
+      expect(link).toHaveAttribute("href");
+    });
   });
 
   it("uses custom aria-label", () => {

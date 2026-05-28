@@ -4,6 +4,22 @@ import userEvent from "@testing-library/user-event";
 import { Input, Textarea } from "./ui";
 
 describe("Input", () => {
+  it("is focusable and supports keyboard input", async () => {
+    const user = userEvent.setup();
+    render(<Input label="Focus" />);
+    const input = screen.getByLabelText("Focus");
+    input.focus();
+    expect(input).toHaveFocus();
+    await user.keyboard("A");
+    expect(input.value).toContain("A");
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<Input label="A11y" aria-label="Fält" />);
+    const input = screen.getByLabelText("Fält");
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute("aria-label", "Fält");
+  });
   it("links label to input via generated id", () => {
     render(<Input label="Name" />);
     const input = screen.getByLabelText("Name");
@@ -52,6 +68,22 @@ describe("Input", () => {
 });
 
 describe("Textarea", () => {
+  it("is focusable and supports keyboard input", async () => {
+    const user = userEvent.setup();
+    render(<Textarea label="FocusArea" />);
+    const ta = screen.getByLabelText("FocusArea");
+    ta.focus();
+    expect(ta).toHaveFocus();
+    await user.keyboard("Hej");
+    expect(ta.value).toContain("Hej");
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(<Textarea label="A11yArea" aria-label="Fritext" />);
+    const ta = screen.getByLabelText("Fritext");
+    expect(ta).toBeInTheDocument();
+    expect(ta).toHaveAttribute("aria-label", "Fritext");
+  });
   it("renders textarea with label and rows", () => {
     render(<Textarea label="Msg" rows={6} />);
     const ta = screen.getByLabelText("Msg");

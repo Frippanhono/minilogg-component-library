@@ -41,4 +41,37 @@ describe("DepartmentOverviewCard", () => {
     expect(container.querySelector(".fc-card__department-stats")).toBeNull();
     expect(container.querySelector(".fc-card__department-theme")).toBeNull();
   });
+
+  it("supports click events if onClick is provided", async () => {
+    const user = require("@testing-library/user-event").default.setup();
+    const handleClick = vi.fn();
+    render(
+      <DepartmentOverviewCard name="Klickbar" onClick={handleClick} data-testid="clickable" />,
+    );
+    const el = screen.getByTestId("clickable");
+    await user.click(el);
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = require("@testing-library/user-event").default.setup();
+    const handleClick = vi.fn();
+    render(
+      <DepartmentOverviewCard name="Klara" onClick={handleClick} data-testid="kbd" />,
+    );
+    const el = screen.getByTestId("kbd");
+    el.focus();
+    expect(el).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(handleClick).toHaveBeenCalled();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <DepartmentOverviewCard aria-label="Avdelningskort" data-testid="a11y" name="A" />,
+    );
+    const el = screen.getByTestId("a11y");
+    expect(el).toHaveAttribute("aria-label", "Avdelningskort");
+  });
 });

@@ -60,3 +60,13 @@ Designen är enkel och tydlig med fokus på läsbarhet och användarvänlighet. 
 ## Återanvändbarhet
 
 Input och Textarea är generiska och kan användas i alla typer av formulär. De är enkla att utöka med egna props och CSS-klasser samt kan kombineras med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Inputs` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,inputs&title=%5BFeedback%5D+inputs%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,inputs&title=%5BBug%5D+inputs%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,inputs&title=%5BFeature%5D+inputs%3A+)
+
+Pågående diskussioner finns under labeln [`inputs`](../../issues?q=is%3Aissue+label%3Ainputs).

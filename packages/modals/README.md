@@ -1,6 +1,5 @@
 # @minilogg/modals
 
-
 ## Syfte
 
 Modal-komponenten används för att visa dialogrutor som kräver användarens uppmärksamhet, t.ex. bekräftelser, formulär eller viktig information. Den hjälper till att fokusera användarens interaktion på en specifik uppgift.
@@ -33,14 +32,15 @@ const [open, setOpen] = useState(false);
 
 ## Props
 
-| Prop       | Typ                    | Default | Beskrivning                                         |
-| ---------- | ---------------------- | ------- | --------------------------------------------------- |
-| `open`     | `boolean`              | —       | Styr om dialogen visas.                             |
-| `onClose`  | `() => void`           | —       | Anropas när användaren stänger dialogen.            |
-| `title`    | `ReactNode`            | —       | Rubrik. Som sträng används den även som aria-label. |
-| `children` | `ReactNode`            | —       | Dialogens brödinnehåll.                             |
-| `footer`   | `ReactNode`            | —       | Innehåll i footern, t.ex. knappar.                  |
-| `size`     | `"sm" \| "md" \| "lg"` | `"md"`  | Bredd på dialogen.                                  |
+| Prop      | Typ          | Default | Beskrivning                                         |
+| --------- | ------------ | ------- | --------------------------------------------------- |
+| `open`    | `boolean`    | —       | Styr om dialogen visas.                             |
+| `onClose` | `() => void` | —       | Anropas när användaren stänger dialogen.            |
+| `title`   | `ReactNode`  | —       | Rubrik. Som sträng används den även som aria-label. |
+
+| `children` | `ReactNode` | — | Dialogens brödinnehåll. |
+| `footer` | `ReactNode` | — | Innehåll i footern, t.ex. knappar. |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Bredd på dialogen. |
 
 ## Beteende
 
@@ -63,3 +63,13 @@ Designen är enkel och tydlig med hög kontrast och tydliga fokusmarkeringar. Di
 ## Återanvändbarhet
 
 Modal är generisk och kan användas i alla delar av applikationen där en dialogruta behövs. Den är enkel att utöka med egna props och kan kombineras med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Modal` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,modals&title=%5BFeedback%5D+modals%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,modals&title=%5BBug%5D+modals%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,modals&title=%5BFeature%5D+modals%3A+)
+
+Pågående diskussioner finns under labeln [`modals`](../../issues?q=is%3Aissue+label%3Amodals).

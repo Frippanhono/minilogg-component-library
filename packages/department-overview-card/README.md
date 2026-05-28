@@ -1,6 +1,5 @@
 # @minilogg/department-overview-card
 
-
 ## Syfte
 
 DepartmentOverviewCard används för att presentera en översikt av en avdelning i pedagogiska plattformar. Den visar namn, antal barn, antal pedagoger och aktuellt tema på ett tydligt och samlat sätt.
@@ -9,13 +8,13 @@ Bygger på `@minilogg/cards`.
 
 ## Props
 
-| Prop            | Typ      | Beskrivning                        |
-| --------------- | -------- | ---------------------------------- |
-| `name`          | `string` | Avdelningens namn.                 |
-| `childrenCount` | `number` | Antal inskrivna barn.              |
-| `teachersCount` | `number` | Antal pedagoger.                   |
-| `theme`         | `string` | Aktuellt tema för avdelningen.     |
-| `className`     | `string` | (Valfritt) Extra CSS-klasser.      |
+| Prop            | Typ      | Beskrivning                    |
+| --------------- | -------- | ------------------------------ |
+| `name`          | `string` | Avdelningens namn.             |
+| `childrenCount` | `number` | Antal inskrivna barn.          |
+| `teachersCount` | `number` | Antal pedagoger.               |
+| `theme`         | `string` | Aktuellt tema för avdelningen. |
+| `className`     | `string` | (Valfritt) Extra CSS-klasser.  |
 
 ```jsx
 import { DepartmentOverviewCard } from "@minilogg/department-overview-card";
@@ -45,3 +44,13 @@ Designen är tydlig och modern med fokus på överskådlighet. Färg, typografi 
 ## Återanvändbarhet
 
 Komponenten är generisk och kan användas i olika vyer där avdelningsinformation behöver presenteras. Enkel att utöka med fler fält eller anpassa med egna CSS-klasser.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `DepartmentOverviewCard` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,department-overview-card&title=%5BFeedback%5D+department-overview-card%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,department-overview-card&title=%5BBug%5D+department-overview-card%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,department-overview-card&title=%5BFeature%5D+department-overview-card%3A+)
+
+Pågående diskussioner finns under labeln [`department-overview-card`](../../issues?q=is%3Aissue+label%3Adepartment-overview-card).

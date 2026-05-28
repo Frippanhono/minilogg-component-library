@@ -1,6 +1,5 @@
 # @minilogg/badges
 
-
 ## Syfte
 
 Badge-komponenten används för att visa status, kategorier eller räknare på ett tydligt och kompakt sätt. Den hjälper användaren att snabbt uppfatta viktig information eller statusindikatorer i gränssnittet.
@@ -40,3 +39,13 @@ Badge har en enkel och tydlig design med hög kontrast för att säkerställa go
 ## Återanvändbarhet
 
 Badge-komponenten är generisk och kan användas i många olika sammanhang, t.ex. i listor, tabeller, kort eller knappar. Den är enkel att utöka med egna CSS-klasser och kan kombineras med andra komponenter i biblioteket.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Badge` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,badges&title=%5BFeedback%5D+badges%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,badges&title=%5BBug%5D+badges%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,badges&title=%5BFeature%5D+badges%3A+)
+
+Pågående diskussioner finns under labeln [`badges`](../../issues?q=is%3Aissue+label%3Abadges).

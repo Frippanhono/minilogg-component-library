@@ -48,3 +48,13 @@ Button följer designbibliotekets färgpalett och typografi. Varianter och storl
 ## Återanvändbarhet
 
 Button-komponenten är generisk och kan användas i alla delar av applikationen där en åtgärd behövs. Den är enkel att utöka med egna CSS-klasser och kan kombineras med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Button` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,button&title=%5BFeedback%5D+button%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,button&title=%5BBug%5D+button%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,button&title=%5BFeature%5D+button%3A+)
+
+Pågående diskussioner finns under labeln [`button`](../../issues?q=is%3Aissue+label%3Abutton).

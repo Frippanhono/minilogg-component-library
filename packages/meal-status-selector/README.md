@@ -1,6 +1,5 @@
 # @minilogg/meal-status-selector
 
-
 ## Syfte
 
 MealStatusSelector används för att snabbt och enkelt rapportera hur en måltid upplevdes, t.ex. i förskola eller skola. Den ger ett tydligt och användarvänligt sätt att samla in feedback kring måltider.
@@ -47,3 +46,13 @@ Designen är enkel och lekfull med tydliga färger, ikoner och stor touch-yta. F
 ## Återanvändbarhet
 
 MealStatusSelector är generisk och kan användas i olika sammanhang där feedback kring status eller upplevelse behövs. Enkel att utöka med egna alternativ och anpassa med CSS.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `MealStatusSelector` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,meal-status-selector&title=%5BFeedback%5D+meal-status-selector%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,meal-status-selector&title=%5BBug%5D+meal-status-selector%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,meal-status-selector&title=%5BFeature%5D+meal-status-selector%3A+)
+
+Pågående diskussioner finns under labeln [`meal-status-selector`](../../issues?q=is%3Aissue+label%3Ameal-status-selector).

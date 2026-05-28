@@ -1,6 +1,5 @@
 # @minilogg/dropdowns
 
-
 ## Syfte
 
 Dropdown-komponenten används för att visa en lista med valbara alternativ i en meny som öppnas vid klick. Den hjälper till att spara utrymme och skapa ett mer fokuserat gränssnitt när många valmöjligheter finns.
@@ -59,3 +58,13 @@ Designen är enkel och tydlig med hög kontrast och tydliga markeringar för val
 ## Återanvändbarhet
 
 Dropdown är generisk och kan användas i många olika sammanhang där en lista med val behövs. Den är enkel att utöka med egna props och kan kombineras med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Dropdown` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,dropdowns&title=%5BFeedback%5D+dropdowns%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,dropdowns&title=%5BBug%5D+dropdowns%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,dropdowns&title=%5BFeature%5D+dropdowns%3A+)
+
+Pågående diskussioner finns under labeln [`dropdowns`](../../issues?q=is%3Aissue+label%3Adropdowns).

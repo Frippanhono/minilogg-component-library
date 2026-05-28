@@ -10,6 +10,55 @@ function Trigger({ onReady }) {
 }
 
 describe("Toasts", () => {
+  it("renders toast container and shows multiple toasts", () => {
+    let api;
+    render(
+      <ToastProvider>
+        <Trigger onReady={(a) => (api = a)} />
+      </ToastProvider>,
+    );
+    act(() => {
+      api.info("Info");
+      api.success("Success");
+    });
+    expect(screen.getByText("Info")).toBeInTheDocument();
+    expect(screen.getByText("Success")).toBeInTheDocument();
+  });
+
+  it("is keyboard focusable and close button can be activated with keyboard", async () => {
+    const user = userEvent.setup();
+    let api;
+    render(
+      <ToastProvider>
+        <Trigger onReady={(a) => (api = a)} />
+      </ToastProvider>,
+    );
+    act(() => {
+      api.show("Kbd", { duration: 0 });
+    });
+    const closeBtn = screen.getByRole("button", { name: /Stäng notifiering/i });
+    closeBtn.focus();
+    expect(closeBtn).toHaveFocus();
+    await user.keyboard("{Enter}");
+    expect(screen.queryByText("Kbd")).not.toBeInTheDocument();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    let api;
+    render(
+      <ToastProvider>
+        <Trigger onReady={(a) => (api = a)} />
+      </ToastProvider>,
+    );
+    act(() => {
+      api.info("A11yInfo");
+      api.error("A11yError");
+    });
+    expect(screen.getByRole("status")).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByRole("alert")).toHaveAttribute("aria-live", "assertive");
+    // Toasts should be dismissible
+    expect(screen.getAllByRole("button", { name: /Stäng notifiering/i }).length).toBeGreaterThan(0);
+  });
   beforeEach(() => {
     vi.useFakeTimers();
   });

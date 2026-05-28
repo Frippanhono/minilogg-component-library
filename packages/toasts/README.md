@@ -1,6 +1,5 @@
 # @minilogg/toasts
 
-
 ## Syfte
 
 Toasts-komponenten används för att visa tillfälliga notifieringar och feedback till användaren, t.ex. vid sparande, fel eller annan viktig information. Den hjälper till att snabbt kommunicera status utan att störa användarens arbetsflöde.
@@ -70,3 +69,13 @@ Designen är enkel och tydlig med hög kontrast, tydliga färgvarianter och ikon
 ## Återanvändbarhet
 
 Toasts är generiska och kan användas i alla delar av applikationen där notifieringar behövs. De är enkla att utöka med egna varianter och kan kombineras med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Toasts` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,toasts&title=%5BFeedback%5D+toasts%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,toasts&title=%5BBug%5D+toasts%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,toasts&title=%5BFeature%5D+toasts%3A+)
+
+Pågående diskussioner finns under labeln [`toasts`](../../issues?q=is%3Aissue+label%3Atoasts).

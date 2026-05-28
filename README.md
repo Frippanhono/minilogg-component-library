@@ -1,2 +1,94 @@
-# minilogg-component-library
-Ett återanvändbart komponentbibliotek utvecklat för lärplattformen MiniLogg med fokus på modern frontendutveckling och konsekvent UI-design.
+# MiniLogg Component Library
+
+> Ett återanvändbart komponentbibliotek/designsystem för MiniLogg – en pedagogisk webbapplikation. Byggt med React, Vite, Storybook och moderna frontend-principer.
+
+## Innehåll
+
+- [Om projektet](#om-projektet)
+- [Struktur](#struktur)
+- [Kom igång](#kom-igång)
+- [Storybook](#storybook)
+- [Testning](#testning)
+- [Komponenter](#komponenter)
+- [Bidra & feedback](#bidra--feedback)
+
+## Om projektet
+
+MiniLogg Component Library är ett monorepo med återanvändbara UI-komponenter för lärplattformen MiniLogg och liknande pedagogiska applikationer. Fokus ligger på tillgänglighet, skalbarhet, tydlig dokumentation och konsekvent design.
+
+## Struktur
+
+```
+minilogg-component-library/
+├── apps/
+│   └── storybook/         # Dokumentation & visuell testning
+├── packages/              # Alla UI-komponenter (varje mapp = ett npm-paket)
+│   ├── badges/
+│   ├── button/
+│   ├── ...
+├── package.json           # Workspace-root
+├── README.md              # Den här filen
+└── LICENSE
+```
+
+## Kom igång
+
+1. **Kloning & installation**
+
+   ```sh
+   git clone <repo-url>
+   cd minilogg-component-library
+   npm install
+   ```
+
+2. **Starta Storybook**
+
+   ```sh
+   npm run storybook
+   ```
+
+3. **Kör tester**
+   ```sh
+   npm test
+   ```
+
+## Storybook
+
+Storybook visar alla komponenter med kodexempel och interaktiva kontroller.
+
+- Starta lokalt: `npm run storybook`
+- [Se komponenter i Storybook](./apps/storybook)
+
+## Testning
+
+Alla komponenter testas med Vitest och Testing Library. Kör `npm test` för att köra alla tester.
+
+## Komponenter
+
+Varje komponent finns som ett eget npm-paket i `packages/` och har egen README, stories och tester. Exempel:
+
+- badges
+- button
+- cards
+- child-card
+- department-overview-card
+- dropdowns
+- inputs
+- meal-status-selector
+- message-card
+- modals
+- navbar
+- tabs
+- teacher-card
+- toasts
+- weekly-schedule
+
+Se respektive mapp för detaljerad dokumentation och props.
+
+## Bidra & feedback
+
+Välkommen att bidra! Skapa gärna en issue för buggar, förbättringsförslag eller feedback. Se även respektive komponent-README för länkar till feedback och buggrapportering.
+
+---
+
+© 2026 MiniLogg. Alla rättigheter förbehållna.

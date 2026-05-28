@@ -36,6 +36,10 @@ Komponenten använder `role="tablist"`, `role="tab"`, `role="tabpanel"` och `ari
 
 Tabs är responsiv och anpassar sig till olika skärmstorlekar. Flikarna kan scrollas horisontellt på mindre skärmar och layouten fungerar lika bra på mobil, surfplatta och desktop.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Designval
 
 Designen är enkel och tydlig med hög kontrast och tydliga markeringar för aktiv flik. Färg och typografi följer bibliotekets riktlinjer. Flikarna är stora och lätta att klicka på även på mobil.

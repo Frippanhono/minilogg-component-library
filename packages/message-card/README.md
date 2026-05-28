@@ -38,6 +38,10 @@ import {
 
 Rollnycklar: `teacher`, `guardian`, `child`, `admin`, `system`.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Accessibility
 
 Komponenterna använder semantiska HTML-element och är tillgängliga för skärmläsare. Viktig information presenteras alltid med text och/eller ikon, inte bara färg. Fokusmarkeringar och tangentbordsstöd finns för interaktiva delar.

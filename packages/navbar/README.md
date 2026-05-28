@@ -38,6 +38,10 @@ import { Navbar } from "@minilogg/navbar";
 | `onNavigate` | `(link) => void`                                     | —                   | Om angiven används den i stället för default-länknavigering (förhindrar omladdning). |
 | `ariaLabel`  | `string`                                             | `"Huvudnavigering"` | Tillgänglig etikett för `<nav>`-landmarken.                                          |
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Beteende
 
 - **Mobil (≤ 720px):** navbar:en är fast förankrad längst ner i vyn. `brand`

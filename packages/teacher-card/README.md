@@ -38,6 +38,10 @@ TeacherCard använder semantiska HTML-element och är tillgänglig för skärml�
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i listor och som fristående kort på mobil, surfplatta och desktop.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Designval
 
 Designen är tydlig och professionell med mjuka former, tydliga färger och enkel typografi. Titlar har distinkta färger och ikoner för att snabbt signalera roll eller funktion.

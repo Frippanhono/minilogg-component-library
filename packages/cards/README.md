@@ -65,6 +65,10 @@ Alla komponenter tar `children` och `className` och vidarebefordrar övriga prop
 
 Card-komponenterna är byggda med semantiska HTML-element och stödjer tangentbordsnavigation samt skärmläsare. Interaktiva kort har tydliga fokusmarkeringar och använder aldrig enbart färg för att signalera status eller val.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Responsivitet
 
 Kort är responsiva och anpassar sig till olika skärmstorlekar med hjälp av flexibla layouter och CSS. De fungerar lika bra i grid, listor eller som fristående element på mobil, surfplatta och desktop.

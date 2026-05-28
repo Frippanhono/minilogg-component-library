@@ -33,6 +33,10 @@ Passar visuellt ihop med `ChildCard`, `TeacherCard`, `WeeklySchedule`, `MealStat
 
 Komponenten använder semantiska HTML-element och är tillgänglig för skärmläsare. Viktig information presenteras alltid med text, inte bara färg. Fokusmarkeringar och tangentbordsstöd finns för interaktiva delar.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Responsivitet
 
 DepartmentOverviewCard är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i grid och som fristående kort på mobil, surfplatta och desktop.

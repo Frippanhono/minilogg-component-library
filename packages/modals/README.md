@@ -38,6 +38,10 @@ const [open, setOpen] = useState(false);
 | `onClose` | `() => void` | —       | Anropas när användaren stänger dialogen.            |
 | `title`   | `ReactNode`  | —       | Rubrik. Som sträng används den även som aria-label. |
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 | `children` | `ReactNode` | — | Dialogens brödinnehåll. |
 | `footer` | `ReactNode` | — | Innehåll i footern, t.ex. knappar. |
 | `size` | `"sm" \| "md" \| "lg"` | `"md"` | Bredd på dialogen. |

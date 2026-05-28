@@ -36,6 +36,10 @@ import { Input, Textarea } from "@minilogg/inputs";
 
 Övriga props (`value`, `onChange`, `placeholder`, …) vidarebefordras till `<input>`.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ### `Textarea`
 
 Samma props som `Input` förutom `type`, plus:

@@ -122,6 +122,60 @@ function App() {
   return (
     <ToastProvider position="top-right">
       <div className="app__main">
+        <header className="app__hero">
+          <h1>MiniLogg Components Library</h1>
+          <nav className="app__hero-toc" aria-label="Komponenter">
+            <span className="app__hero-intro">
+              En samling React-komponenter:
+            </span>
+            {[
+              { href: "#navbar", label: "navbar", variant: "success" },
+              { href: "#components", label: "buttons", variant: "info" },
+              {
+                href: "#meal-status",
+                label: "meal-status-selector",
+                variant: "success",
+              },
+              { href: "#badges", label: "badges", variant: "success" },
+              { href: "#cards", label: "cards", variant: "info" },
+              {
+                href: "#department-overview",
+                label: "department-overview-card",
+                variant: "success",
+              },
+              { href: "#child-card", label: "child-card", variant: "success" },
+              {
+                href: "#teacher-card",
+                label: "teacher-card",
+                variant: "success",
+              },
+              {
+                href: "#message-card",
+                label: "message-card",
+                variant: "success",
+              },
+              { href: "#dropdown-tabs", label: "dropdowns", variant: "info" },
+              { href: "#dropdown-tabs", label: "tabs", variant: "info" },
+              {
+                href: "#weekly-schedule",
+                label: "weekly-schedule",
+                variant: "success",
+              },
+              { href: "#forms", label: "inputs", variant: "success" },
+              { href: "#feedback", label: "modals", variant: "info" },
+              { href: "#feedback", label: "toasts", variant: "info" },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="app__hero-toc-link"
+              >
+                <Badge variant={item.variant}>{item.label}</Badge>
+              </a>
+            ))}
+          </nav>
+        </header>
+
         <Toaster richColors position="top-right" />
         <section id="navbar" className="section">
           <h2 className="section__title">Navbar</h2>

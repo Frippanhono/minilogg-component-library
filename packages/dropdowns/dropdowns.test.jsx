@@ -11,6 +11,13 @@ const items = [
 ];
 
 describe("Dropdown", () => {
+  it("renders trigger button and menu items", () => {
+    render(<Dropdown label="Test" items={items} />);
+    const trigger = screen.getByRole("button", { name: /Test/ });
+    expect(trigger).toBeInTheDocument();
+    // Menu should not be visible initially
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
   it("opens on trigger click and shows items", async () => {
     const user = userEvent.setup();
     render(<Dropdown label="Actions" items={items} />);
@@ -61,6 +68,21 @@ describe("Dropdown", () => {
     trigger.focus();
     await user.keyboard("{ArrowDown}");
     expect(screen.getByRole("menuitem", { name: "Edit" })).toHaveFocus();
+  });
+
+  it("has appropriate accessibility attributes", async () => {
+    render(<Dropdown label="A11y" items={items} aria-label="Meny" />);
+    const trigger = screen.getByRole("button", { name: /A11y/ });
+    expect(trigger).toHaveAttribute("aria-haspopup", "menu");
+    expect(trigger).toHaveAttribute("aria-expanded");
+    await userEvent.click(trigger);
+    const menu = screen.getByRole("menu");
+    expect(menu).toBeInTheDocument();
+    expect(menu).toHaveAttribute("aria-label", "Meny");
+    const menuitems = screen.getAllByRole("menuitem");
+    menuitems.forEach((item) => {
+      expect(item).toHaveAttribute("tabindex");
+    });
   });
 
   it("ArrowDown skips disabled items when navigating", async () => {

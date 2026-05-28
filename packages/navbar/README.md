@@ -1,6 +1,5 @@
 # @minilogg/navbar
 
-
 ## Syfte
 
 Navbar-komponenten används för att ge användaren en tydlig och lättnavigerad väg genom applikationen. Den fungerar både som mobil tab bar och som klassisk toppnavigering på desktop.
@@ -64,3 +63,13 @@ Designen är modern och tydlig med hög kontrast, stora klickytor och visuella m
 ## Återanvändbarhet
 
 Navbar är generisk och kan användas i alla typer av applikationer där navigering behövs. Den är enkel att utöka med egna länkar, ikoner och actions samt kan anpassas med CSS.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `Navbar` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,navbar&title=%5BFeedback%5D+navbar%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,navbar&title=%5BBug%5D+navbar%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,navbar&title=%5BFeature%5D+navbar%3A+)
+
+Pågående diskussioner finns under labeln [`navbar`](../../issues?q=is%3Aissue+label%3Anavbar).

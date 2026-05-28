@@ -68,6 +68,28 @@ describe("ChildCard", () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
+  it("is keyboard focusable and can be activated with keyboard", async () => {
+    const user = require("@testing-library/user-event").default.setup();
+    const onClick = vi.fn();
+    render(
+      <ChildCard data-testid="kbd" name="Klara Kort" onClick={onClick} />,
+    );
+    const el = screen.getByTestId("kbd");
+    el.focus();
+    expect(el).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <ChildCard aria-label="Barnkort" data-testid="a11y" name="A" />,
+    );
+    const el = screen.getByTestId("a11y");
+    expect(el).toHaveAttribute("aria-label", "Barnkort");
+  });
+
   it("renders role badges: B for child and V for each guardian", () => {
     render(
       <ChildCard

@@ -79,3 +79,7 @@ Förbättringsförslag, buggrapporter och komponentfeedback för `Toasts` tas ta
 - [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,toasts&title=%5BFeature%5D+toasts%3A+)
 
 Pågående diskussioner finns under labeln [`toasts`](../../issues?q=is%3Aissue+label%3Atoasts).
+
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)

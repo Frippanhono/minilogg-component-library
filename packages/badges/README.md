@@ -28,6 +28,10 @@ import { Badge } from "@minilogg/badges";
 
 Badge-komponenten är utformad för att vara tillgänglig för alla användare. Den använder semantiska HTML-element och kan läsas av skärmläsare. Färg används aldrig som enda informationsbärare – text och/eller ikon kompletterar alltid färgsignaler.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Responsivitet
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar genom flexibla storleksalternativ (`sm`, `md`, `lg`). Den fungerar lika bra på mobil, surfplatta och desktop.

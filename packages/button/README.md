@@ -37,6 +37,10 @@ import { Button } from "@minilogg/buttons";
 
 Button-komponenten använder semantiska `<button>`-element och är fullt tillgänglig via tangentbord och skärmläsare. Färg används aldrig som enda signal – text och/eller ikon kompletterar alltid färg. Fokusmarkeringar är tydliga för att underlätta navigering.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Responsivitet
 
 Knappen är responsiv och anpassar sig till olika skärmstorlekar genom flexibla storleksalternativ (`sm`, `md`, `lg`). Den fungerar lika bra på mobil, surfplatta och desktop.

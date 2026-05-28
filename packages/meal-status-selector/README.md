@@ -39,6 +39,10 @@ import { MealStatusSelector } from "@minilogg/meal-status-selector";
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Knapparna är stora och lätta att trycka på även på mobil.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Designval
 
 Designen är enkel och lekfull med tydliga färger, ikoner och stor touch-yta. Färg används tillsammans med ikon och text för att signalera val.

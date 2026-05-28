@@ -34,6 +34,10 @@ Statusnycklar: `present`, `absent`, `sick`, `leave`, `arriving`, `pickedup`. Ski
 
 ChildCard använder semantiska HTML-element och är tillgänglig för skärmläsare. Statusindikatorer kompletteras alltid med text/ikon, inte bara färg. Fokusmarkeringar och tangentbordsstöd finns för interaktiva delar.
 
+## Storybook
+
+[Se live-exempel i Storybook](../../apps/storybook)
+
 ## Responsivitet
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i listor och som fristående kort på mobil, surfplatta och desktop.

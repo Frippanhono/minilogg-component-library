@@ -6,6 +6,44 @@ import {
 } from "./ui";
 
 describe("TeacherCard", () => {
+  it("renders all main elements", () => {
+    render(
+      <TeacherCard name="Test Testsson" title="forskollarare" department="Testavd" />,
+    );
+    expect(screen.getByRole("heading", { name: "Test Testsson" })).toBeInTheDocument();
+    expect(screen.getByText("Testavd")).toBeInTheDocument();
+    expect(screen.getByText(TEACHER_TITLE_PRESETS.forskollarare.label)).toBeInTheDocument();
+  });
+
+  it("is keyboard focusable and can be activated with Enter/Space", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(
+      <TeacherCard data-testid="teacher" name="Klara K" onClick={onClick} />,
+    );
+    const el = screen.getByTestId("teacher");
+    el.focus();
+    expect(el).toHaveFocus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it("has appropriate accessibility attributes", () => {
+    render(
+      <TeacherCard name="A11y" title="forskollarare" department="A" />,
+    );
+    const heading = screen.getByRole("heading", { name: "A11y" });
+    expect(heading).toHaveAttribute("tabindex");
+    // Card should be focusable if interactive
+    render(
+      <TeacherCard name="A11y2" onClick={() => {}} />,
+    );
+    const card = screen.getByText("A11y2").closest(".fc-card");
+    expect(card).toHaveAttribute("tabindex");
+    // Should have role if interactive
+    expect(card).toHaveAttribute("role");
+  });
   it("renders name, title preset and department", () => {
     render(
       <TeacherCard

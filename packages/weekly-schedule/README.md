@@ -1,6 +1,5 @@
 # @minilogg/weekly-schedule
 
-
 ## Syfte
 
 WeeklySchedule används för att visa en överskådlig veckovy med händelser, tider och layout. Den hjälper användaren att snabbt få en överblick över planerade aktiviteter utan att behöva navigera i ett komplext kalendersystem.
@@ -13,7 +12,13 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 <WeeklySchedule
   title="Vecka 19"
   events={[
-    { day: "mon", start: "09:00", end: "10:30", title: "Samling", tone: "info" },
+    {
+      day: "mon",
+      start: "09:00",
+      end: "10:30",
+      title: "Samling",
+      tone: "info",
+    },
     { day: "wed", start: "14:00", title: "Skapande verkstad", tone: "success" },
     { day: "fri", start: "11:30", title: "Lunch & vila" },
   ]}
@@ -22,32 +27,32 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 
 ## Komponenter
 
-| Komponent         | Beskrivning                                                |
-| ----------------- | ---------------------------------------------------------- |
-| `WeeklySchedule`  | Container som visar dagar i en grid och händelser per dag. |
-| `ScheduleEvent`   | Ett enskilt händelsekort (tid, titel, beskrivning, ton).   |
-| `WEEKDAYS_SV`     | Standarduppsättning veckodagar mån–sön på svenska.         |
+| Komponent        | Beskrivning                                                |
+| ---------------- | ---------------------------------------------------------- |
+| `WeeklySchedule` | Container som visar dagar i en grid och händelser per dag. |
+| `ScheduleEvent`  | Ett enskilt händelsekort (tid, titel, beskrivning, ton).   |
+| `WEEKDAYS_SV`    | Standarduppsättning veckodagar mån–sön på svenska.         |
 
 ## Props – `WeeklySchedule`
 
-| Prop         | Typ                                                            | Default                    | Beskrivning                                              |
-| ------------ | -------------------------------------------------------------- | -------------------------- | -------------------------------------------------------- |
-| `days`       | `Array<{ key, short, label }>`                                 | `WEEKDAYS_SV.slice(0, 5)`  | Dagar som ska visas (mån–fre som standard).              |
-| `events`     | `Array<Event>`                                                 | `[]`                       | Händelser där `day` matchar någon `days[i].key`.         |
-| `title`      | `ReactNode`                                                    | –                          | Valfri rubrik ovanför schemat.                           |
-| `emptyLabel` | `ReactNode`                                                    | `"Inga händelser"`         | Text som visas i dagar utan händelser.                   |
+| Prop         | Typ                            | Default                   | Beskrivning                                      |
+| ------------ | ------------------------------ | ------------------------- | ------------------------------------------------ |
+| `days`       | `Array<{ key, short, label }>` | `WEEKDAYS_SV.slice(0, 5)` | Dagar som ska visas (mån–fre som standard).      |
+| `events`     | `Array<Event>`                 | `[]`                      | Händelser där `day` matchar någon `days[i].key`. |
+| `title`      | `ReactNode`                    | –                         | Valfri rubrik ovanför schemat.                   |
+| `emptyLabel` | `ReactNode`                    | `"Inga händelser"`        | Text som visas i dagar utan händelser.           |
 
 ### Event-objekt
 
-| Fält          | Typ                                                              | Beskrivning                              |
-| ------------- | ---------------------------------------------------------------- | ---------------------------------------- |
-| `day`         | `string`                                                         | Måste matcha `days[i].key`.              |
-| `title`       | `ReactNode`                                                      | Händelsens rubrik.                       |
-| `start`       | `string`                                                         | T.ex. `"09:00"` (sortering sker på den). |
-| `end`         | `string`                                                         | T.ex. `"10:30"`.                         |
-| `description` | `ReactNode`                                                      | Valfri beskrivning.                      |
-| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"`      | Färgton på kortet.                       |
-| `onClick`     | `(e) => void`                                                    | Gör kortet klickbart (Enter/Space).      |
+| Fält          | Typ                                                         | Beskrivning                              |
+| ------------- | ----------------------------------------------------------- | ---------------------------------------- |
+| `day`         | `string`                                                    | Måste matcha `days[i].key`.              |
+| `title`       | `ReactNode`                                                 | Händelsens rubrik.                       |
+| `start`       | `string`                                                    | T.ex. `"09:00"` (sortering sker på den). |
+| `end`         | `string`                                                    | T.ex. `"10:30"`.                         |
+| `description` | `ReactNode`                                                 | Valfri beskrivning.                      |
+| `tone`        | `"neutral" \| "info" \| "success" \| "warning" \| "danger"` | Färgton på kortet.                       |
+| `onClick`     | `(e) => void`                                               | Gör kortet klickbart (Enter/Space).      |
 
 ## Responsivitet
 
@@ -66,3 +71,13 @@ Designen är enkel och tydlig med fokus på överskådlighet. Färg, typografi o
 ## Återanvändbarhet
 
 WeeklySchedule är generisk och kan användas i alla sammanhang där en veckovy behövs. Den är enkel att utöka med fler fält, anpassa med egna CSS-klasser och kombinera med andra komponenter.
+
+## Feedback
+
+Förbättringsförslag, buggrapporter och komponentfeedback för `WeeklySchedule` tas tacksamt emot från användare och teammedlemmar.
+
+- [Lämna komponentfeedback](../../issues/new?template=component_feedback.yml&labels=feedback,weekly-schedule&title=%5BFeedback%5D+weekly-schedule%3A+)
+- [Rapportera bugg](../../issues/new?template=bug_report.yml&labels=bug,weekly-schedule&title=%5BBug%5D+weekly-schedule%3A+)
+- [Föreslå förbättring](../../issues/new?template=feature_request.yml&labels=enhancement,weekly-schedule&title=%5BFeature%5D+weekly-schedule%3A+)
+
+Pågående diskussioner finns under labeln [`weekly-schedule`](../../issues?q=is%3Aissue+label%3Aweekly-schedule).

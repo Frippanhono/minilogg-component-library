@@ -45,12 +45,17 @@ jobs:
             sleep 15
           done
 
-      - name: Ensure oxc-parser Linux binding
+      - name: Ensure oxc Linux bindings
         shell: bash
         run: |
-          if ! node -e "require.resolve('@oxc-parser/binding-linux-x64-gnu')" >/dev/null 2>&1; then
-            echo "Missing @oxc-parser/binding-linux-x64-gnu, installing fallback package..."
-            npm install --no-save --workspace=storybook @oxc-parser/binding-linux-x64-gnu
+          missing=()
+
+          node -e "require.resolve('@oxc-parser/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-parser/binding-linux-x64-gnu")
+          node -e "require.resolve('@oxc-resolver/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-resolver/binding-linux-x64-gnu")
+
+          if [ ${#missing[@]} -gt 0 ]; then
+            echo "Missing bindings: ${missing[*]}"
+            npm install --no-save --workspace=storybook "${missing[@]}"
           fi
 
       - name: Build Storybook

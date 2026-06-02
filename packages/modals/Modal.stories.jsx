@@ -2,32 +2,68 @@ import React from "react";
 import { Modal } from "@minilogg/modals";
 import { Button } from "@minilogg/buttons";
 
-export default {
-  title: "Components/Modal",
-  component: Modal,
-};
-
-export const Default = (args) => {
+const ModalStory = ({ openButtonText, title, content, closeButtonText }) => {
   const [open, setOpen] = React.useState(false);
+
   return (
-    <div>
-      <Button onClick={() => setOpen(true)}>{args.openButtonText || "Open Modal"}</Button>
+    <>
+      <Button onClick={() => setOpen(true)}>{openButtonText}</Button>
+
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        title="Exempelmodal"
-        footer={<Button onClick={() => setOpen(false)}>Stäng</Button>}
+        title={title}
+        footer={
+          <Button onClick={() => setOpen(false)}>{closeButtonText}</Button>
+        }
       >
-        <p>Detta är en modal från modals-paketet.</p>
+        <p>{content}</p>
       </Modal>
-    </div>
+    </>
   );
 };
 
-Default.args = {
-  openButtonText: "Open Modal",
+export default {
+  title: "Components/Modal",
+  component: ModalStory,
+
+  args: {
+    openButtonText: "Öppna modal",
+    title: "Exempelmodal",
+    content: "Detta är en modal från modals-paketet.",
+    closeButtonText: "Stäng",
+  },
+
+  argTypes: {
+    openButtonText: {
+      control: "text",
+      description: "Text på knappen som öppnar modalen",
+    },
+    title: {
+      control: "text",
+      description: "Modalens rubrik",
+    },
+    content: {
+      control: "text",
+      description: "Innehåll i modalen",
+    },
+    closeButtonText: {
+      control: "text",
+      description: "Text på stäng-knappen",
+    },
+  },
 };
 
-Default.argTypes = {
-  openButtonText: { control: "text", name: "Text på öppna-knapp" },
+export const Default = {
+  render: (args) => <ModalStory {...args} />,
+};
+
+export const Custom = {
+  render: (args) => <ModalStory {...args} />,
+  args: {
+    openButtonText: "Visa information",
+    title: "Anpassad modal",
+    content: "Här kan du skriva valfritt innehåll.",
+    closeButtonText: "Stäng fönster",
+  },
 };

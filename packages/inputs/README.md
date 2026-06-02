@@ -40,6 +40,11 @@ import { Input, Textarea } from "@minilogg/inputs";
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ### `Textarea`
 
 Samma props som `Input` förutom `type`, plus:

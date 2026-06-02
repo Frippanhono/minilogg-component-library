@@ -42,6 +42,11 @@ Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Layouten 
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Designval
 
 Designen är tydlig och professionell med mjuka former, tydliga färger och enkel typografi. Titlar har distinkta färger och ikoner för att snabbt signalera roll eller funktion.

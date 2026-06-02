@@ -40,6 +40,11 @@ Tabs är responsiv och anpassar sig till olika skärmstorlekar. Flikarna kan scr
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Designval
 
 Designen är enkel och tydlig med hög kontrast och tydliga markeringar för aktiv flik. Färg och typografi följer bibliotekets riktlinjer. Flikarna är stora och lätta att klicka på även på mobil.

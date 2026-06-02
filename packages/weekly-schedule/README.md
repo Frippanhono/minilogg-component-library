@@ -38,13 +38,18 @@ import { WeeklySchedule } from "@minilogg/weekly-schedule";
 | Prop         | Typ                            | Default                   | Beskrivning                                      |
 | ------------ | ------------------------------ | ------------------------- | ------------------------------------------------ |
 | `days`       | `Array<{ key, short, label }>` | `WEEKDAYS_SV.slice(0, 5)` | Dagar som ska visas (mån–fre som standard).      |
+| `events`     | `Array<Event>`                 | `[]`                      | Händelser där `day` matchar någon `days[i].key`. |
+| `title`      | `ReactNode`                    | –                         | Valfri rubrik ovanför schemat.                   |
+| `emptyLabel` | `ReactNode`                    | `"Inga händelser"`        | Text som visas i dagar utan händelser.           |
 
 ## Storybook
 
 [Se live-exempel i Storybook](../../apps/storybook)
-| `events`     | `Array<Event>`                 | `[]`                      | Händelser där `day` matchar någon `days[i].key`. |
-| `title`      | `ReactNode`                    | –                         | Valfri rubrik ovanför schemat.                   |
-| `emptyLabel` | `ReactNode`                    | `"Inga händelser"`        | Text som visas i dagar utan händelser.           |
+
+Stories i detta paket:
+
+- `Default`
+- `Custom`
 
 ### Event-objekt
 

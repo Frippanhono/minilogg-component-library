@@ -1,22 +1,49 @@
-import { useState } from "react";
 import { MealStatusSelector } from "./ui";
 
 export default {
   title: "Components/MealStatusSelector",
   component: MealStatusSelector,
+
+  args: {
+    label: "Hur gick måltiden?",
+    defaultValue: undefined,
+    value: undefined,
+    size: "md",
+    disabled: false,
+    hideLabel: false,
+  },
+
   argTypes: {
-    size: {
+    label: {
+      control: "text",
+      description: "Texten som visas som label",
+    },
+    defaultValue: {
       control: { type: "select" },
-      options: ["sm", "md", "lg"],
+      options: [undefined, "bra", "okej", "inte-bra"],
+      description: "Förvalt värde",
     },
     value: {
       control: { type: "select" },
       options: [undefined, "bra", "okej", "inte-bra"],
+      description: "Kontrollerat värde",
     },
-    disabled: { control: "boolean" },
-    hideLabel: { control: "boolean" },
-    label: { control: "text" },
-    onChange: { action: "changed" },
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+      description: "Storlek på komponenten",
+    },
+    disabled: {
+      control: "boolean",
+      description: "Inaktiverar komponenten",
+    },
+    hideLabel: {
+      control: "boolean",
+      description: "Döljer label visuellt",
+    },
+    onChange: {
+      action: "changed",
+    },
   },
 };
 
@@ -26,68 +53,12 @@ export const Default = {
   },
 };
 
-export const WithDefaultValue = {
-  args: {
-    label: "Hur gick måltiden?",
-    defaultValue: "bra",
-  },
-};
-
-export const Small = {
+export const Custom = {
   args: {
     label: "Hur gick måltiden?",
     defaultValue: "okej",
-    size: "sm",
-  },
-};
-
-export const Large = {
-  args: {
-    label: "Hur gick måltiden?",
-    defaultValue: "inte-bra",
-    size: "lg",
-  },
-};
-
-export const Disabled = {
-  args: {
-    label: "Hur gick måltiden?",
-    defaultValue: "okej",
-    disabled: true,
-  },
-};
-
-export const HiddenLabel = {
-  args: {
-    label: "Hur gick måltiden?",
-    hideLabel: true,
-  },
-};
-
-export const CustomOptions = {
-  args: {
-    label: "Hur mår du idag?",
-    options: [
-      { value: "glad", label: "Glad", icon: "😀", tone: "good" },
-      { value: "sådär", label: "Sådär", icon: "😐", tone: "ok" },
-      { value: "ledsen", label: "Ledsen", icon: "😢", tone: "bad" },
-    ],
-  },
-};
-
-export const Controlled = {
-  render: (args) => {
-    const [value, setValue] = useState("bra");
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-        <MealStatusSelector {...args} value={value} onChange={setValue} />
-        <p style={{ margin: 0 }}>
-          Valt värde: <strong>{value}</strong>
-        </p>
-      </div>
-    );
-  },
-  args: {
-    label: "Hur gick måltiden?",
+    size: "md",
+    disabled: false,
+    hideLabel: false,
   },
 };

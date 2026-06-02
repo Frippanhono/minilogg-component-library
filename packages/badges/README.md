@@ -32,6 +32,12 @@ Badge-komponenten är utformad för att vara tillgänglig för alla användare. 
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+- `AllVariants`
+
 ## Responsivitet
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar genom flexibla storleksalternativ (`sm`, `md`, `lg`). Den fungerar lika bra på mobil, surfplatta och desktop.

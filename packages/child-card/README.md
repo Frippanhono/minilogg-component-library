@@ -38,6 +38,11 @@ ChildCard använder semantiska HTML-element och är tillgänglig för skärmläs
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Responsivitet
 
 Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i listor och som fristående kort på mobil, surfplatta och desktop.

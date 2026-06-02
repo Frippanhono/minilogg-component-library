@@ -1,33 +1,96 @@
 import React from "react";
-
-// Example Input component import
 import { Input, Textarea } from "./ui/index.jsx";
 
-export default {
-  title: "Inputs/Inputs",
+const InputStory = ({
+  componentType,
+  label,
+  placeholder,
+  hint,
+  error,
+  type,
+  rows,
+}) => {
+  if (componentType === "textarea") {
+    return (
+      <Textarea
+        label={label}
+        placeholder={placeholder}
+        hint={hint}
+        error={error}
+        rows={rows}
+      />
+    );
+  }
+
+  return (
+    <Input
+      label={label}
+      placeholder={placeholder}
+      hint={hint}
+      error={error}
+      type={type}
+    />
+  );
 };
 
+export default {
+  title: "Components/Inputs",
+  component: InputStory,
 
-export const TextInput = () => (
-  <Input label="Namn" placeholder="Skriv ditt namn" />
-);
+  args: {
+    componentType: "input",
+    label: "Namn",
+    placeholder: "Skriv ditt namn",
+    hint: "",
+    error: "",
+    type: "text",
+    rows: 4,
+  },
 
-export const TextInputWithHint = () => (
-  <Input label="E-post" type="email" hint="Vi delar aldrig din adress" placeholder="namn@exempel.se" />
-);
+  argTypes: {
+    componentType: {
+      control: { type: "select" },
+      options: ["input", "textarea"],
+      description: "Vilken komponent som ska visas",
+    },
+    label: {
+      control: "text",
+    },
+    placeholder: {
+      control: "text",
+    },
+    hint: {
+      control: "text",
+    },
+    error: {
+      control: "text",
+    },
+    type: {
+      control: { type: "select" },
+      options: ["text", "email", "password"],
+    },
+    rows: {
+      control: { type: "number", min: 2, max: 10 },
+    },
+  },
+};
 
-export const TextInputWithError = () => (
-  <Input label="Lösenord" type="password" error="Lösenordet är för kort" placeholder="Minst 8 tecken" />
-);
+export const Default = {
+  render: (args) => <InputStory {...args} />,
+  args: {
+    componentType: "input",
+    label: "Namn",
+    placeholder: "Skriv ditt namn",
+  },
+};
 
-export const TextareaDefault = () => (
-  <Textarea label="Meddelande" placeholder="Skriv ett meddelande..." />
-);
-
-export const TextareaWithHint = () => (
-  <Textarea label="Beskrivning" hint="Max 500 tecken" rows={6} placeholder="Beskriv din fråga" />
-);
-
-export const TextareaWithError = () => (
-  <Textarea label="Kommentar" error="Kommentar krävs" />
-);
+export const Custom = {
+  render: (args) => <InputStory {...args} />,
+  args: {
+    componentType: "textarea",
+    label: "Beskrivning",
+    placeholder: "Skriv här...",
+    hint: "Max 500 tecken",
+    rows: 6,
+  },
+};

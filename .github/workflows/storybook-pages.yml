@@ -52,6 +52,7 @@ jobs:
 
           node -e "require.resolve('@oxc-parser/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-parser/binding-linux-x64-gnu")
           node -e "require.resolve('@oxc-resolver/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-resolver/binding-linux-x64-gnu")
+          node -e "require.resolve('@rolldown/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@rolldown/binding-linux-x64-gnu")
 
           if [ ${#missing[@]} -gt 0 ]; then
             echo "Missing bindings: ${missing[*]}"

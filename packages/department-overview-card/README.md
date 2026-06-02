@@ -37,6 +37,11 @@ Komponenten använder semantiska HTML-element och är tillgänglig för skärml�
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Responsivitet
 
 DepartmentOverviewCard är responsiv och anpassar sig till olika skärmstorlekar. Layouten fungerar bra både i grid och som fristående kort på mobil, surfplatta och desktop.

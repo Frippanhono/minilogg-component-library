@@ -3,83 +3,43 @@ import { Badge } from "./ui";
 export default {
   title: "Components/Badge",
   component: Badge,
+
+  args: {
+    children: "Badge",
+    variant: "neutral",
+    size: "md",
+  },
+
   argTypes: {
     variant: {
       control: { type: "select" },
       options: ["neutral", "info", "success", "warning", "danger"],
     },
+
     size: {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
-    children: { control: "text" },
+
+    children: {
+      control: "text",
+    },
   },
 };
 
-export const Neutral = {
-  args: {
-    children: "Neutral",
-    variant: "neutral",
-  },
-};
-
-export const Info = {
-  args: {
-    children: "Info",
-    variant: "info",
-  },
-};
-
-export const Success = {
+export const Default = {
   args: {
     children: "Aktiv",
     variant: "success",
-  },
-};
-
-export const Warning = {
-  args: {
-    children: "Varning",
-    variant: "warning",
-  },
-};
-
-export const Danger = {
-  args: {
-    children: "Fel",
-    variant: "danger",
-  },
-};
-
-export const Small = {
-  args: {
-    children: "Small",
-    variant: "info",
-    size: "sm",
-  },
-};
-
-export const Medium = {
-  args: {
-    children: "Medium",
-    variant: "info",
     size: "md",
   },
 };
 
-export const Large = {
+export const Custom = {
   args: {
-    children: "Large",
+    children: "Anpassad badge",
     variant: "info",
-    size: "lg",
-  },
-};
-
-export const Counter = {
-  args: {
-    children: "12",
-    variant: "danger",
-    size: "sm",
+    size: "md",
   },
 };
 

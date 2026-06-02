@@ -2,14 +2,24 @@ import React from "react";
 import { ToastProvider, useToast } from "@minilogg/toasts";
 import { Button } from "@minilogg/buttons";
 
-const variantMessages = {
-  success: "Saved!",
-  warning: "Heads up!",
-  error: "Something failed",
+const ToastDemo = ({ variant, message, buttonText }) => {
+  const toast = useToast();
+
+  const handleClick = () => {
+    toast.show(message, { variant });
+  };
+
+  return (
+    <Button variant={variant} onClick={handleClick}>
+      {buttonText}
+    </Button>
+  );
 };
 
 export default {
   title: "Components/Toasts",
+  component: ToastDemo,
+
   decorators: [
     (Story) => (
       <ToastProvider position="top-right">
@@ -17,27 +27,42 @@ export default {
       </ToastProvider>
     ),
   ],
+
+  args: {
+    variant: "success",
+    message: "Ändringarna har sparats",
+    buttonText: "Visa toast",
+  },
+
   argTypes: {
     variant: {
-      control: { type: "select" },
+      control: "select",
       options: ["success", "warning", "error"],
       description: "Toast-variant",
+    },
+    message: {
+      control: "text",
+      description: "Text som visas i toasten",
+    },
+    buttonText: {
+      control: "text",
+      description: "Text på knappen",
     },
   },
 };
 
-export const Default = (args) => {
-  const toast = useToast();
-  const handleClick = () => {
-    toast.show(variantMessages[args.variant] || "", { variant: args.variant });
-  };
-  return (
-    <Button variant={args.variant} onClick={handleClick}>
-      {`Toast: ${args.variant || "success"}`}
-    </Button>
-  );
+export const Default = {
+  args: {
+    variant: "success",
+    message: "Ändringarna har sparats",
+    buttonText: "Visa toast",
+  },
 };
 
-Default.args = {
-  variant: "success",
+export const Custom = {
+  args: {
+    variant: "warning",
+    message: "Skriv valfri text här",
+    buttonText: "Testa toast",
+  },
 };

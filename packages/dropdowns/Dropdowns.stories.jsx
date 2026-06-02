@@ -1,45 +1,49 @@
-import React from 'react';
-import { Dropdown } from './ui/index.jsx';
-
-export default {
-  title: 'Components/Dropdown',
-  component: Dropdown,
-};
-
-
+import React from "react";
+import { Dropdown } from "./ui/index.jsx";
 
 const defaultItems = [
-  { label: 'Edit', value: 'edit' },
-  { label: 'Duplicate', value: 'duplicate' },
-  { label: 'Archive', value: 'archive' },
-  { label: 'Delete', value: 'delete', disabled: true },
+  { label: "Edit", value: "edit" },
+  { label: "Duplicate", value: "duplicate" },
+  { label: "Archive", value: "archive" },
+  { label: "Delete", value: "delete", disabled: true },
 ];
 
-const Template = (args) => <Dropdown {...args} />;
+export default {
+  title: "Components/Dropdown",
+  component: Dropdown,
 
-export const Default = Template.bind({});
-Default.args = {
-  items: defaultItems,
-  label: 'Choose action',
-};
-
-export const Customizable = Template.bind({});
-Customizable.args = {
-  items: [
-    { label: 'First', value: 'first' },
-    { label: 'Second', value: 'second' },
-    { label: 'Third', value: 'third' },
-    { label: 'Fourth', value: 'fourth' },
-  ],
-  label: 'Custom label',
-};
-Customizable.argTypes = {
-  items: {
-    control: 'object',
-    description: 'Array of dropdown items',
+  args: {
+    items: defaultItems,
+    label: "Choose action",
   },
-  label: {
-    control: 'text',
-    description: 'Button label',
+
+  argTypes: {
+    items: {
+      control: "object",
+      description: "Array med dropdown-alternativ",
+    },
+    label: {
+      control: "text",
+      description: "Text på dropdown-knappen",
+    },
+  },
+};
+
+export const Default = {
+  args: {
+    items: defaultItems,
+    label: "Choose action",
+  },
+};
+
+export const Custom = {
+  args: {
+    items: [
+      { label: "First", value: "first" },
+      { label: "Second", value: "second" },
+      { label: "Third", value: "third" },
+      { label: "Fourth", value: "fourth" },
+    ],
+    label: "Custom label",
   },
 };

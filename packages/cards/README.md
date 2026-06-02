@@ -69,6 +69,13 @@ Card-komponenterna är byggda med semantiska HTML-element och stödjer tangentbo
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+- `PostCardDefault`
+- `PostCardCustom`
+
 ## Responsivitet
 
 Kort är responsiva och anpassar sig till olika skärmstorlekar med hjälp av flexibla layouter och CSS. De fungerar lika bra i grid, listor eller som fristående element på mobil, surfplatta och desktop.

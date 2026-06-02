@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar } from "./ui";
 
-// Ikoner för stories
 function PhoneIcon() {
   return (
     <svg
@@ -19,6 +18,7 @@ function PhoneIcon() {
     </svg>
   );
 }
+
 function CheckIcon() {
   return (
     <svg
@@ -36,6 +36,7 @@ function CheckIcon() {
     </svg>
   );
 }
+
 function ContactsIcon() {
   return (
     <svg
@@ -56,6 +57,7 @@ function ContactsIcon() {
     </svg>
   );
 }
+
 function MoreIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -65,25 +67,18 @@ function MoreIcon() {
     </svg>
   );
 }
-function HomeIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M3 12 12 3l9 9" />
-      <path d="M5 10v10h14V10" />
-    </svg>
-  );
-}
 
 const CLARA_AVATAR =
   "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20fill%3D%27%23f1c27d%27/%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2726%27%20r%3D%2712%27%20fill%3D%27%23ffd9a8%27/%3E%3Cpath%20d%3D%27M10%2064c2-12%2010-20%2022-20s20%208%2022%2020z%27%20fill%3D%27%23ffd9a8%27/%3E%3C/svg%3E";
+
+const ICONS = {
+  phone: <PhoneIcon />,
+  check: <CheckIcon />,
+  contacts: <ContactsIcon />,
+  more: <MoreIcon />,
+};
+
+const iconOptions = Object.keys(ICONS);
 
 const DEFAULT_LINKS = [
   { label: "Anmäla frånvaro", href: "/absence", icon: <PhoneIcon /> },
@@ -99,13 +94,45 @@ export default {
   parameters: {
     layout: "fullscreen",
   },
+
+  args: {
+    links: DEFAULT_LINKS,
+    activeHref: "/clara",
+    ariaLabel: "Huvudnavigering",
+  },
+
   argTypes: {
     ariaLabel: { control: "text" },
     activeHref: { control: "text" },
     onNavigate: { action: "navigate" },
+
     links: { control: false },
     brand: { control: false },
     actions: { control: false },
+
+    brandLabel: { control: "text" },
+    absenceLabel: { control: "text" },
+    checkinLabel: { control: "text" },
+    featuredLabel: { control: "text" },
+    contactsLabel: { control: "text" },
+    moreLabel: { control: "text" },
+
+    absenceIcon: {
+      control: { type: "select" },
+      options: iconOptions,
+    },
+    checkinIcon: {
+      control: { type: "select" },
+      options: iconOptions,
+    },
+    contactsIcon: {
+      control: { type: "select" },
+      options: iconOptions,
+    },
+    moreIcon: {
+      control: { type: "select" },
+      options: iconOptions,
+    },
   },
 };
 
@@ -113,134 +140,71 @@ export const Default = {
   args: {
     links: DEFAULT_LINKS,
     activeHref: "/clara",
+    ariaLabel: "Huvudnavigering",
   },
 };
 
-export const WithBrand = {
+export const Custom = {
   args: {
-    brand: <strong>Minilogg</strong>,
-    links: DEFAULT_LINKS,
-    activeHref: "/checkin",
-  },
-};
-
-export const WithActions = {
-  args: {
-    brand: <strong>Minilogg</strong>,
-    links: DEFAULT_LINKS,
-    activeHref: "/clara",
-    actions: (
-      <button
-        type="button"
-        style={{
-          padding: "0.5rem 0.9rem",
-          borderRadius: "999px",
-          border: "1px solid #d0d5dd",
-          background: "#fff",
-          cursor: "pointer",
-        }}
-      >
-        Logga ut
-      </button>
-    ),
-  },
-};
-
-export const WithoutFeatured = {
-  args: {
-    links: [
-      { label: "Hem", href: "/", icon: <HomeIcon /> },
-      { label: "Anmäla frånvaro", href: "/absence", icon: <PhoneIcon /> },
-      { label: "Checka in/ut", href: "/checkin", icon: <CheckIcon /> },
-      { label: "Kontaktlista", href: "/contacts", icon: <ContactsIcon /> },
-      { label: "Mer", href: "/more", icon: <MoreIcon /> },
-    ],
-    activeHref: "/checkin",
-  },
-};
-
-export const ThreeLinks = {
-  args: {
-    links: [
-      { label: "Hem", href: "/", icon: <HomeIcon /> },
-      { label: "Checka in/ut", href: "/checkin", icon: <CheckIcon /> },
-      { label: "Mer", href: "/more", icon: <MoreIcon /> },
-    ],
-    activeHref: "/",
-  },
-};
-
-export const Controlled = {
-  render: (args) => {
-    const [active, setActive] = useState("/clara");
-    return (
-      <Navbar
-        {...args}
-        activeHref={active}
-        onNavigate={(link) => setActive(link.href)}
-      />
-    );
-  },
-  args: {
-    brand: <strong>Minilogg</strong>,
-    links: DEFAULT_LINKS,
-  },
-};
-
-export const UsingDefaults = {
-  args: {},
-};
-
-/**
- * Story där varje länks etikett kan ändras via Controls-panelen.
- * Använd t.ex. fältet `featuredLabel` för att byta ut "Clara" mot ett
- * annat barns namn.
- */
-export const EditableLabels = {
-  argTypes: {
-    absenceLabel: { control: "text" },
-    checkinLabel: { control: "text" },
-    featuredLabel: { control: "text" },
-    contactsLabel: { control: "text" },
-    moreLabel: { control: "text" },
-    brandLabel: { control: "text" },
-    // Dölj props som inte är relevanta för denna story
-    links: { table: { disable: true } },
-    brand: { table: { disable: true } },
-    actions: { table: { disable: true } },
-  },
-  args: {
+    brandLabel: "Minilogg",
     absenceLabel: "Anmäla frånvaro",
     checkinLabel: "Checka in/ut",
     featuredLabel: "Clara",
     contactsLabel: "Kontaktlista",
     moreLabel: "Mer",
-    brandLabel: "Minilogg",
-    activeHref: "/clara",
+
+    absenceIcon: "phone",
+    checkinIcon: "check",
+    contactsIcon: "contacts",
+    moreIcon: "more",
+
+    activeHref: "/featured",
+    ariaLabel: "Huvudnavigering",
   },
+
   render: ({
+    brandLabel,
     absenceLabel,
     checkinLabel,
     featuredLabel,
     contactsLabel,
     moreLabel,
-    brandLabel,
+    absenceIcon,
+    checkinIcon,
+    contactsIcon,
+    moreIcon,
     ...args
   }) => (
     <Navbar
       {...args}
       brand={brandLabel ? <strong>{brandLabel}</strong> : undefined}
       links={[
-        { label: absenceLabel, href: "/absence", icon: <PhoneIcon /> },
-        { label: checkinLabel, href: "/checkin", icon: <CheckIcon /> },
+        {
+          label: absenceLabel,
+          href: "/absence",
+          icon: ICONS[absenceIcon],
+        },
+        {
+          label: checkinLabel,
+          href: "/checkin",
+          icon: ICONS[checkinIcon],
+        },
         {
           label: featuredLabel,
           href: "/featured",
           avatar: CLARA_AVATAR,
           featured: true,
         },
-        { label: contactsLabel, href: "/contacts", icon: <ContactsIcon /> },
-        { label: moreLabel, href: "/more", icon: <MoreIcon /> },
+        {
+          label: contactsLabel,
+          href: "/contacts",
+          icon: ICONS[contactsIcon],
+        },
+        {
+          label: moreLabel,
+          href: "/more",
+          icon: ICONS[moreIcon],
+        },
       ]}
     />
   ),

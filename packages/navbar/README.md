@@ -42,6 +42,11 @@ import { Navbar } from "@minilogg/navbar";
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Beteende
 
 - **Mobil (≤ 720px):** navbar:en är fast förankrad längst ner i vyn. `brand`

@@ -41,6 +41,12 @@ Button-komponenten använder semantiska `<button>`-element och är fullt tillgä
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+- `AllVariants`
+
 ## Responsivitet
 
 Knappen är responsiv och anpassar sig till olika skärmstorlekar genom flexibla storleksalternativ (`sm`, `md`, `lg`). Den fungerar lika bra på mobil, surfplatta och desktop.

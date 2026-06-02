@@ -37,14 +37,18 @@ const [open, setOpen] = useState(false);
 | `open`    | `boolean`    | —       | Styr om dialogen visas.                             |
 | `onClose` | `() => void` | —       | Anropas när användaren stänger dialogen.            |
 | `title`   | `ReactNode`  | —       | Rubrik. Som sträng används den även som aria-label. |
+| `children` | `ReactNode`                  | —       | Dialogens brödinnehåll.                           |
+| `footer`   | `ReactNode`                  | —       | Innehåll i footern, t.ex. knappar.                |
+| `size`     | `"sm" \| "md" \| "lg"` | `"md"`  | Bredd på dialogen.                                |
 
 ## Storybook
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
-| `children` | `ReactNode` | — | Dialogens brödinnehåll. |
-| `footer` | `ReactNode` | — | Innehåll i footern, t.ex. knappar. |
-| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Bredd på dialogen. |
+Stories i detta paket:
+
+- `Default`
+- `Custom`
 
 ## Beteende
 

@@ -42,10 +42,11 @@ import { Dropdown } from "@minilogg/dropdowns";
 ## Storybook
 
 [Se live-exempel i Storybook](../../apps/storybook)
-- Sätter `aria-haspopup`, `aria-expanded` och använder `role="menu"`/`menuitem` för tillgänglighet.
-- Tangentbord: ↑/↓ navigerar, Home/End hoppar, Enter/Space väljer, Esc stänger, Tab stänger utan att flytta fokus tillbaka.
-- Typeahead: skriv en bokstav för att hoppa till nästa alternativ som börjar med tecknet.
-- Inaktiverade items kan inte väljas och hoppas över vid tangentbordsnavigering.
+
+Stories i detta paket:
+
+- `Default`
+- `Custom`
 
 ## Accessibility
 

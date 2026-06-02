@@ -83,3 +83,8 @@ Pågående diskussioner finns under labeln [`toasts`](../../issues?q=is%3Aissue+
 ## Storybook
 
 [Se live-exempel i Storybook](../../apps/storybook)
+
+Stories i detta paket:
+
+- `Default`
+- `Custom`

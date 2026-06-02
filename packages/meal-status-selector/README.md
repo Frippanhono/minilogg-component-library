@@ -43,6 +43,11 @@ Komponenten är responsiv och anpassar sig till olika skärmstorlekar. Knapparna
 
 [Se live-exempel i Storybook](../../apps/storybook)
 
+Stories i detta paket:
+
+- `Default`
+- `Custom`
+
 ## Designval
 
 Designen är enkel och lekfull med tydliga färger, ikoner och stor touch-yta. Färg används tillsammans med ikon och text för att signalera val.

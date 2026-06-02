@@ -28,7 +28,22 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        shell: bash
+        run: |
+          npm config set fetch-retries 5
+          npm config set fetch-retry-factor 2
+          npm config set fetch-retry-mintimeout 20000
+          npm config set fetch-retry-maxtimeout 120000
+
+          for attempt in 1 2 3; do
+            npm ci && break
+            if [ "$attempt" -eq 3 ]; then
+              echo "npm ci failed after 3 attempts"
+              exit 1
+            fi
+            echo "npm ci failed (attempt $attempt). Retrying in 15s..."
+            sleep 15
+          done
 
       - name: Build Storybook
         run: npm run build-storybook --workspace=storybook

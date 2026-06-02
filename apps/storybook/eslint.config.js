@@ -18,4 +18,16 @@ export default defineConfig([globalIgnores(['dist']), {
     globals: globals.browser,
     parserOptions: { ecmaFeatures: { jsx: true } },
   },
+  rules: {
+    'no-use-before-define': ['error', {
+      functions: false,
+      classes: true,
+      variables: true,
+    }],
+  },
+}, {
+  files: ['vite.config.js', 'eslint.config.js', '.storybook/**/*.{js,jsx}'],
+  languageOptions: {
+    globals: globals.node,
+  },
 }, ...storybook.configs["flat/recommended"]])

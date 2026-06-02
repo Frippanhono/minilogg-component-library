@@ -59,6 +59,20 @@ Storybook visar alla komponenter med kodexempel och interaktiva kontroller.
 - Starta lokalt: `npm run storybook`
 - [Se komponenter i Storybook](./apps/storybook)
 
+### Publik Storybook-lank (GitHub Pages)
+
+Projektet har en GitHub Actions-workflow som bygger och publicerar Storybook till GitHub Pages vid push till `main`.
+
+1. Pusha senaste andringar till `main`.
+2. I GitHub: ga till `Settings -> Pages` och satt `Source` till `GitHub Actions`.
+3. Nar workflowen `Deploy Storybook to GitHub Pages` ar klar far du en publik URL.
+
+Standardformat pa URL:
+
+`https://<ditt-github-anvandarnamn>.github.io/minilogg-component-library/`
+
+Den URL:en ar den du ska anvanda i rapporten.
+
 ## Testning
 
 Alla komponenter testas med Vitest och Testing Library. Kör `npm test` för att köra alla tester.

@@ -45,7 +45,13 @@ jobs:
             sleep 15
           done
 
-      - name: Ensure oxc Linux bindings
+      - name: Heal optional dependencies in Storybook workspace
+        shell: bash
+        run: |
+          # Workaround for npm optional-dependency bug in CI runners.
+          npm install --no-save --workspace=storybook --include=optional
+
+      - name: Ensure Linux native bindings
         shell: bash
         run: |
           missing=()
@@ -53,10 +59,15 @@ jobs:
           node -e "require.resolve('@oxc-parser/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-parser/binding-linux-x64-gnu")
           node -e "require.resolve('@oxc-resolver/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@oxc-resolver/binding-linux-x64-gnu")
           node -e "require.resolve('@rolldown/binding-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("@rolldown/binding-linux-x64-gnu")
+          node -e "require.resolve('lightningcss-linux-x64-gnu')" >/dev/null 2>&1 || missing+=("lightningcss-linux-x64-gnu")
 
           if [ ${#missing[@]} -gt 0 ]; then
             echo "Missing bindings: ${missing[*]}"
-            npm install --no-save --workspace=storybook "${missing[@]}"
+            npm install --no-save --workspace=storybook \
+              @oxc-parser/binding-linux-x64-gnu@0.127.0 \
+              @oxc-resolver/binding-linux-x64-gnu@11.19.1 \
+              @rolldown/binding-linux-x64-gnu@1.0.2 \
+              lightningcss-linux-x64-gnu@1.32.0
           fi
 
       - name: Build Storybook

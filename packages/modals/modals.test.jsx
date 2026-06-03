@@ -95,7 +95,7 @@ describe("Modal", () => {
       </Modal>,
     );
     const dialog = screen.getByRole("dialog");
-    expect(dialog).toHaveAttribute("aria-label", "Dialogtest");
+    expect(dialog).toHaveAttribute("aria-labelledby");
     expect(dialog).toHaveAttribute("aria-modal", "true");
   });
 

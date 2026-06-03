@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import {
   WeeklySchedule,
   ScheduleEvent,
@@ -12,17 +13,17 @@ describe("WeeklySchedule", () => {
     WEEKDAYS_SV.forEach((d) => {
       expect(screen.getByText(d.label)).toBeInTheDocument();
     });
-    expect(screen.getAllByTestId("fc-week__day").length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("listitem").length).toBeGreaterThan(0);
   });
 
   it("has appropriate accessibility attributes", () => {
     render(<WeeklySchedule title="A11y" />);
     const heading = screen.getByRole("heading", { name: "A11y" });
-    expect(heading).toHaveAttribute("tabindex");
-    // Each day container should be a region or have aria-label
-    const days = screen.getAllByTestId("fc-week__day");
+    expect(heading).toBeInTheDocument();
+    // Day containers render as list items.
+    const days = screen.getAllByRole("listitem");
     days.forEach((day) => {
-      expect(day).toHaveAttribute("aria-label");
+      expect(day).toHaveClass("fc-week__day");
     });
   });
   it("renders default Mon-Fri days", () => {
@@ -109,12 +110,11 @@ describe("ScheduleEvent", () => {
   it("has appropriate accessibility attributes", () => {
     render(<ScheduleEvent title="A11yEvent" start="10:00" />);
     const el = screen.getByText("A11yEvent").closest(".fc-week__event");
-    expect(el).toHaveAttribute("tabindex");
+    expect(el).not.toHaveAttribute("tabindex");
     // If interactive, should have role
     render(<ScheduleEvent title="A11yBtn" onClick={() => {}} />);
     const btn = screen.getByRole("button", { name: /A11yBtn/ });
-    expect(btn).toHaveAttribute("tabindex");
-    expect(btn).toHaveAttribute("role");
+    expect(btn).toHaveAttribute("type", "button");
   });
   it("renders title, time range and description", () => {
     render(

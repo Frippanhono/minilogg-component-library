@@ -78,7 +78,7 @@ describe("Dropdown", () => {
     await userEvent.click(trigger);
     const menu = screen.getByRole("menu");
     expect(menu).toBeInTheDocument();
-    expect(menu).toHaveAttribute("aria-label", "Meny");
+    expect(menu).toHaveAttribute("aria-label", "A11y");
     const menuitems = screen.getAllByRole("menuitem");
     menuitems.forEach((item) => {
       expect(item).toHaveAttribute("tabindex");

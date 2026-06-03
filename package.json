@@ -13,5 +13,12 @@
     "storybook": "npm run storybook --workspace=storybook",
     "build-storybook": "npm run build-storybook --workspace=storybook",
     "test": "npm test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "jsdom": "^26.1.0",
+    "vitest": "^4.1.7"
   }
 }

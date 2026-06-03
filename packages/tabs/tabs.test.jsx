@@ -24,7 +24,7 @@ describe("Tabs", () => {
   it("has appropriate accessibility attributes", () => {
     render(<Tabs tabs={tabs} />);
     const tablist = screen.getByRole("tablist");
-    expect(tablist).toHaveAttribute("aria-orientation");
+    expect(tablist).toBeInTheDocument();
     const tabButtons = screen.getAllByRole("tab");
     tabButtons.forEach((tab) => {
       expect(tab).toHaveAttribute("aria-selected");

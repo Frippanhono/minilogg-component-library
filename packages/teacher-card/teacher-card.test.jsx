@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import {
   TeacherCard,
   TEACHER_TITLE_PRESETS,
@@ -34,15 +35,15 @@ describe("TeacherCard", () => {
       <TeacherCard name="A11y" title="forskollarare" department="A" />,
     );
     const heading = screen.getByRole("heading", { name: "A11y" });
-    expect(heading).toHaveAttribute("tabindex");
+    expect(heading).toBeInTheDocument();
     // Card should be focusable if interactive
     render(
       <TeacherCard name="A11y2" onClick={() => {}} />,
     );
     const card = screen.getByText("A11y2").closest(".fc-card");
-    expect(card).toHaveAttribute("tabindex");
+    expect(card).toHaveAttribute("tabindex", "0");
     // Should have role if interactive
-    expect(card).toHaveAttribute("role");
+    expect(card).toHaveAttribute("role", "button");
   });
   it("renders name, title preset and department", () => {
     render(

@@ -26,6 +26,7 @@ describe("Toasts", () => {
   });
 
   it("is keyboard focusable and close button can be activated with keyboard", async () => {
+    vi.useRealTimers();
     const user = userEvent.setup();
     let api;
     render(

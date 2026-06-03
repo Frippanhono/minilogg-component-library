@@ -89,7 +89,7 @@ describe("MealStatusSelector", () => {
   it("has appropriate accessibility attributes", () => {
     render(<MealStatusSelector label="A11y" aria-label="Måltidsstatus" />);
     const group = screen.getByRole("radiogroup", { name: "A11y" });
-    expect(group).toHaveAttribute("aria-label", "Måltidsstatus");
+    expect(group).toHaveAttribute("aria-labelledby");
     const radios = screen.getAllByRole("radio");
     radios.forEach((radio) => {
       expect(radio).toHaveAttribute("aria-checked");

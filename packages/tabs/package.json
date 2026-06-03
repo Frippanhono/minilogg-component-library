@@ -1,9 +1,19 @@
 {
   "name": "@minilogg/tabs",
-  "main": "./index.js"
-  ,
+  "version": "0.1.0",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "ui",
+    "README.md"
+  ],
+  "license": "MIT",
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": ">=18 <20",
+    "react-dom": ">=18 <20"
   }
 }
+

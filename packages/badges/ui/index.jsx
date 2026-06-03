@@ -19,10 +19,24 @@ export function Badge({
   className = "",
   ...rest
 }) {
+  const { onClick, onKeyDown, role, tabIndex, ...restProps } = rest;
+  const interactive = typeof onClick === "function";
+
   return (
     <span
       className={`fc-badge fc-badge--${variant} fc-badge--${size} ${className}`}
-      {...rest}
+      role={interactive ? (role ?? "button") : role}
+      tabIndex={interactive ? (tabIndex ?? 0) : tabIndex}
+      onClick={onClick}
+      onKeyDown={(e) => {
+        onKeyDown?.(e);
+        if (!interactive) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick(e);
+        }
+      }}
+      {...restProps}
     >
       {children}
     </span>

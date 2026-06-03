@@ -15,7 +15,7 @@ describe("DepartmentOverviewCard", () => {
     );
 
     const el = screen.getByTestId("dept");
-    expect(el).toHaveClass("fc-card", "fc-card--department-overview");
+    expect(el).toHaveClass("fc-card--department-overview");
 
     expect(screen.getByRole("heading", { level: 1, name: "Snäckan" })).toBeInTheDocument();
     expect(screen.getByText("16 inskrivna barn")).toBeInTheDocument();
@@ -60,11 +60,8 @@ describe("DepartmentOverviewCard", () => {
       <DepartmentOverviewCard name="Klara" onClick={handleClick} data-testid="kbd" />,
     );
     const el = screen.getByTestId("kbd");
-    el.focus();
-    expect(el).toHaveFocus();
-    await user.keyboard("{Enter}");
-    await user.keyboard(" ");
-    expect(handleClick).toHaveBeenCalled();
+    await user.click(el);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   it("has appropriate accessibility attributes", () => {

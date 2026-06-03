@@ -47,6 +47,13 @@ minilogg-component-library/
    npm run storybook
    ```
 
+   Alternativt direkt i Storybook-appen:
+
+   ```sh
+   cd apps/storybook
+   npm run storybook
+   ```
+
 3. **Kör tester**
    ```sh
    npm test
@@ -58,6 +65,16 @@ Storybook visar alla komponenter med kodexempel och interaktiva kontroller.
 
 - Starta lokalt: `npm run storybook`
 - [Se komponenter i Storybook](./apps/storybook)
+
+## Monorepo-korning
+
+Root-scripts i `package.json` vidarebefordrar till workspace `storybook`.
+
+- `npm run dev` kor `dev` i `apps/storybook`
+- `npm run storybook` kor Storybook i `apps/storybook`
+- `npm run build-storybook` bygger statisk Storybook i `apps/storybook`
+
+Det betyder att du kan kora de vanligaste kommandona direkt fran repo-root.
 
 ### Publik Storybook-lank (GitHub Pages)
 
@@ -76,6 +93,15 @@ Den URL:en ar den du ska anvanda i rapporten.
 ## Testning
 
 Alla komponenter testas med Vitest och Testing Library. Kör `npm test` för att köra alla tester.
+
+## Felsokning
+
+Om `npm run dev` eller `npm run storybook` misslyckas:
+
+1. Kontrollera att installationen ar gjord i repo-root: `npm install`
+2. Kontrollera Node- och npm-version enligt teamets overenskommelse
+3. Testa workspace-kommandot explicit: `npm run storybook --workspace=storybook`
+4. Om fel kvarstar, rensa `node_modules` och installera om
 
 
 ## Komponenter

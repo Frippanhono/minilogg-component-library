@@ -13,6 +13,14 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    // Ensure every workspace package and dependency resolves the same React instance.
+    dedupe: ['react', 'react-dom'],
+    alias: {
+      react: path.resolve(dirname, 'node_modules/react'),
+      'react-dom': path.resolve(dirname, 'node_modules/react-dom')
+    }
+  },
   test: {
     projects: [{
       extends: true,
